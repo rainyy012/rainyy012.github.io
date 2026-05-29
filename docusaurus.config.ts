@@ -161,19 +161,19 @@ const config: Config = {
             },
           ],
         },
-        {
-          // title: '',
-          items: [
-            {
-              label: 'Support this site',
-              to: '/tip',
-            },
-            // {
-            //   label: 'Discord',
-            //   to: DISCORD_LINK,
-            // },
-          ],
-        },
+        // {
+        //   // title: '',
+        //   items: [
+        //     {
+        //       label: 'Support this site',
+        //       to: '/tip',
+        //     },
+        //     // {
+        //     //   label: 'Discord',
+        //     //   to: DISCORD_LINK,
+        //     // },
+        //   ],
+        // },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Rain.`,
     },
