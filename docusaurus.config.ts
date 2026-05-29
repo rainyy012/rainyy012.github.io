@@ -1,9 +1,11 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
-import { DISCORD_LINK, RAIN_GITHUB_IO } from './src/constants/metadata'
+import { config as dotEnvConfig } from 'dotenv'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+dotEnvConfig({ path: '.env.local' })
 
 const config: Config = {
   title: 'Rain\'s Blog',
@@ -16,7 +18,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: RAIN_GITHUB_IO,
+  url: process.env.RAIN_GITHUB_IO,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -34,6 +36,14 @@ const config: Config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+  },
+
+  customFields: {
+    DISCORD_LINK: process.env.DISCORD_LINK,
+    GITHUB_SHA: process.env.GITHUB_SHA,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+    RAIN_GITHUB_IO: process.env.RAIN_GITHUB_IO,
+    DONATE_ETHEREUM_ADDRESS: process.env.DONATE_ETHEREUM_ADDRESS,
   },
 
   presets: [
@@ -110,7 +120,7 @@ const config: Config = {
         //   position: 'left',
         // },
         // {
-        //   href: DISCORD_LINK,
+        //   href: process.env.DISCORD_LINK,
         //   label: 'Discord',
         //   position: 'right',
         // },
@@ -148,6 +158,15 @@ const config: Config = {
             {
               label: 'External Resources',
               to: '/docs/external-resources',
+            },
+          ],
+        },
+        {
+          // title: '',
+          items: [
+            {
+              label: 'Support this site',
+              to: '/tip',
             },
             // {
             //   label: 'Discord',

@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
+      DISCORD_LINK: ${{ vars.DISCORD_LINK }}
+      GITHUB_SHA: ${{ github.sha }}
+      RAIN_GITHUB_IO: "https://${{ github.repository_owner }}.github.io"
     permissions:
       contents: write
     concurrency:

@@ -1,10 +1,10 @@
+import { CustomValues } from './src/components/custom-value'
+
 declare global {
 
   namespace NodeJS {
 
-    interface ProcessEnv {
-      GOOGLE_ANALYTICS_ID: string
-    }
+    interface ProcessEnv extends CustomValues { }
 
   }
 

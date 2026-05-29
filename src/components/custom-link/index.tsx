@@ -1,5 +1,5 @@
 import { useHistory } from '@docusaurus/router'
-import * as Metadata from '@site/src/constants/metadata'
+import { useCustomValues } from '@site/src/components/custom-value'
 import { AnchorHTMLAttributes, DetailedHTMLProps, MouseEvent, ReactNode, useCallback } from 'react'
 
 export type LinkProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> & { href: string }
@@ -11,10 +11,11 @@ export function Link({
 }: LinkProps): ReactNode {
 
   const { push } = useHistory()
+  const { RAIN_GITHUB_IO } = useCustomValues()
 
   const normalizedOrigin = typeof window !== 'undefined'
     ? window.location.origin
-    : Metadata.RAIN_GITHUB_IO
+    : RAIN_GITHUB_IO
 
   const URL_REGEX = new RegExp(`^${normalizedOrigin}\\/?`)
 
