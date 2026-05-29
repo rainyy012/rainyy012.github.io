@@ -10,10 +10,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
       GITHUB_SHA: ${{ github.sha }}
+      GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
       RAIN_GITHUB_IO: "https://${{ github.repository_owner }}.github.io"
+      DONATE_ETHEREUM_ADDRESS: ${{ vars.DONATE_ETHEREUM_ADDRESS }}
     permissions:
       contents: write
     concurrency:
