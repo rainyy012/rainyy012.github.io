@@ -1,0 +1,9 @@
+rain:
+  name: Rain
+  title: she/her # not the intended purpose, but this works for now
+  url: https://github.com/rainyy012
+  image_url: https://github.com/rainyy012.png
+  page: true
+  socials:
+    blueSky: rainyy012.bsky.social
+    email: rainyy-012@proton.me

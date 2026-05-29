@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  gap: 10px;
+  justify-self: start;
+}
+
+.iconsContainer {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+}

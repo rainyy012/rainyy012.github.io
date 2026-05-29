@@ -1,0 +1,15 @@
+campaign:
+  label: Campaign
+  permalink: /campaign
+
+# journey:
+#   label: Journey
+#   permalink: /journey
+  
+memes:
+  label: Memes
+  permalink: /memes
+
+vent:
+  label: Vent
+  permalink: /vent

@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap');
+
+.fleur-de-leah-regular {
+  font-family: "Fleur De Leah", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+article {
+  font-size: 1.15rem;
+}
+
+abbr {
+  cursor: help;
+}
+
+hr {
+  opacity: 0.35;
+}
+
+/**
+ * Warm sepia / coffee tone palette
+ */
+
+:root {
+
+  /* ==========================================================
+   * Primary colors
+   * ========================================================== */
+
+  --ifm-color-primary: #8b6b4f;
+  --ifm-color-primary-dark: #7c5f46;
+  --ifm-color-primary-darker: #735841;
+  --ifm-color-primary-darkest: #5f4936;
+  --ifm-color-primary-light: #9a7758;
+  --ifm-color-primary-lighter: #a37f5f;
+  --ifm-color-primary-lightest: #b99470;
+
+  /* ==========================================================
+   * Base theme
+   * ========================================================== */
+
+  /* Aged paper */
+  --ifm-background-color: #f6f0e7;
+  --ifm-background-surface-color: #fbf7f1;
+
+  /* Warm dark-brown text */
+  --ifm-font-color-base: #3e3126;
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(84, 58, 33, 0.08);
+
+  /* ==========================================================
+   * Navbar
+   * ========================================================== */
+
+  /* Slightly darker than page background */
+  --ifm-navbar-background-color: #ede3d5;
+
+  --ifm-navbar-link-color: #5f4936;
+  --ifm-navbar-link-hover-color: #8b6b4f;
+  --ifm-navbar-link-active-color: #9a7758;
+
+  /* Search input */
+  --ifm-navbar-search-input-background-color: #f8f3ec;
+  --ifm-navbar-search-input-color: #4a392b;
+  --ifm-navbar-search-input-placeholder-color: #8e7965;
+
+  /* ==========================================================
+   * Table of contents
+   * ========================================================== */
+
+  --ifm-toc-link-color: #6f5842;
+}
+
+[data-theme="light"] {
+  --ifm-link-color: #a46428;
+}
+
+/* ==========================================================
+ * Dark mode
+ * ========================================================== */
+
+[data-theme="dark"] {
+  /* ==========================================================
+   * Primary colors
+   * ========================================================== */
+
+  --ifm-color-primary: #c8a98a;
+  --ifm-color-primary-dark: #bc9977;
+  --ifm-color-primary-darker: #b3906d;
+  --ifm-color-primary-darkest: #987555;
+  --ifm-color-primary-light: #d4b99d;
+  --ifm-color-primary-lighter: #dbc2a8;
+  --ifm-color-primary-lightest: #e6d2be;
+
+  /* ==========================================================
+   * Base theme
+   * ========================================================== */
+
+  /* Dark roasted coffee */
+  --ifm-background-color: #211a15;
+  --ifm-background-surface-color: #2b221c;
+
+  /* Warm cream text */
+  --ifm-font-color-base: #e4d8ca;
+
+  --docusaurus-highlighted-code-line-bg: rgba(200, 169, 138, 0.16);
+
+  /* ==========================================================
+   * Navbar
+   * ========================================================== */
+
+  /* Slightly elevated surface */
+  --ifm-navbar-background-color: #2d241d;
+
+  --ifm-navbar-link-color: #d8c1aa;
+  --ifm-navbar-link-hover-color: #e6d2be;
+  --ifm-navbar-link-active-color: #f0dfce;
+
+  /* Search input */
+  --ifm-navbar-search-input-background-color: #3a2f26;
+  --ifm-navbar-search-input-color: #f0e4d6;
+  --ifm-navbar-search-input-placeholder-color: #a88e76;
+
+  /* ==========================================================
+   * Table of contents
+   * ========================================================== */
+
+  --ifm-toc-link-color: #bda48d;
+}
+
+.footer--dark {
+  /* Warm parchment footer */
+  --ifm-footer-background-color: #e7d8cc;
+
+  /* Main footer text */
+  --ifm-footer-color: #4b392c;
+
+  /* Links: coffee brown */
+  --ifm-footer-link-color: #7a5a43;
+  --ifm-footer-link-hover-color: #5f4936;
+
+  /* Section titles */
+  --ifm-footer-title-color: #3a2b21;
+}
+
+[data-theme="dark"] .footer--dark {
+  /* Slightly darker than body */
+  --ifm-footer-background-color: #18120e;
+
+  --ifm-footer-color: #cdb9a6;
+
+  --ifm-footer-link-color: #d8bea3;
+  --ifm-footer-link-hover-color: #f3e3d1;
+
+  --ifm-footer-title-color: #fff4ea;
+}
