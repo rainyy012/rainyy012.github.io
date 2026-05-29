@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://rainyy012.github.io/blog</id>
+    <title>Rain's Blog Blog</title>
+    <updated>2026-05-30T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://rainyy012.github.io/blog"/>
+    <subtitle>Rain's Blog Blog</subtitle>
+    <icon>https://rainyy012.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Still Here, BTW]]></title>
+        <id>https://rainyy012.github.io/blog/still-here-btw</id>
+        <link href="https://rainyy012.github.io/blog/still-here-btw"/>
+        <updated>2026-05-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hello, Dear Reader.]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_FAAG" id="hello-dear-reader">Hello, Dear Reader.<a href="https://rainyy012.github.io/blog/still-here-btw#hello-dear-reader" class="hash-link" aria-label="Direct link to Hello, Dear Reader." title="Direct link to Hello, Dear Reader." translate="no">​</a></h2>
+<p>Thank you for being here.</p>
+<p>This marks the first chapter of Rain's Blog, with more content coming in the future.</p>
+<p>This idea started a few months ago, but it wasn't until last month that the whole picture became clear to me. Since Pride Month is just around the corner, there is no better opportunity to commemorate it by starting my new blog, I thought.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_FAAG" id="now-onto-the-main-topic">Now, Onto The Main Topic:<a href="https://rainyy012.github.io/blog/still-here-btw#now-onto-the-main-topic" class="hash-link" aria-label="Direct link to Now, Onto The Main Topic:" title="Direct link to Now, Onto The Main Topic:" translate="no">​</a></h2>
+<p><a href="https://bsky.app/search?q=%23stillherebtw" target="_blank" rel="noreferrer" class="">#StillHereBTW</a> was inspired by Shyaren's video titled "<a href="https://www.youtube.com/watch?v=aCz_PulxZVI" target="_blank" rel="noreferrer" class="">My MOST Important Video</a>". In case you haven't heard of her or watched the video before, I highly recommend you to check it out:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aCz_PulxZVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+<br>
+<br>
+<br>
+<p>To expand on this topic, here's my take: We need our presence to be acknowledged and our voices to be heard… so that we can be treated with compassion just as any decent human being would to one another. 🙄</p>
+<p>It's infuriating that decency is something we need to demand for. Unfortunately, there are still many people who consciously choose to be hostile towards the queer community.</p>
+<p>They deny us and want us gone. This has been the case in the past, still is in the present, and will be for the foreseeable future. Now, as much as I hate to say, definitively, I don't know if there is hope or not. I can't tell if what I'm clinging onto so desperately is actually hope or delusion, but in spite of so many efforts to get rid of us, we're still here, and perhaps that in itself is a form of hope… and perhaps, in the face of adversity, simply being here is the least effort we could put in to form resistance.</p>
+<br>
+<p>With that said,</p>
+<h2 class="anchor anchorTargetStickyNavbar_FAAG" id="thank-you-for-reading">Thank You For Reading<a href="https://rainyy012.github.io/blog/still-here-btw#thank-you-for-reading" class="hash-link" aria-label="Direct link to Thank You For Reading" title="Direct link to Thank You For Reading" translate="no">​</a></h2>
+<p>I will write to you again soon. Until then, please stay vigilant and be safe.</p>
+<p><br>From the bottom of my heart,<br>
+<span style="font-family:&quot;Fleur De Leah&quot;, cursive;font-size:28pt">Rain</span></p>
+<br>]]></content>
+        <author>
+            <name>Rain</name>
+            <uri>https://github.com/rainyy012</uri>
+        </author>
+        <category label="Campaign" term="Campaign"/>
+    </entry>
+</feed>
