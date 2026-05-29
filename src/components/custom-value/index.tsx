@@ -1,21 +1,16 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import GENERATED_CONFIGS from '@generated/docusaurus.config'
 
-export interface CustomValues {
+export interface CustomValuesEnv {
   DISCORD_LINK: string
-  GITHUB_SHA: string
+  GITHUB_SHA?: string
   GOOGLE_ANALYTICS_ID: string
   RAIN_GITHUB_IO: string
-  DONATE_ETHEREUM_ADDRESS: string
+  DONATE_ETH_ADDRESS: string
+  DONATE_BTC_ADDRESSES: string
 }
 
-export function useCustomValues(): CustomValues {
-  return useDocusaurusContext().siteConfig.customFields! as unknown as CustomValues
+export interface CustomValues extends Omit<CustomValuesEnv, 'DONATE_BTC_ADDRESSES'> {
+  DONATE_BTC_ADDRESSES: Array<string>
 }
 
-export interface CustomValueProps {
-  id: keyof CustomValues
-}
-
-export function CustomValue({ id }: CustomValueProps): CustomValues[typeof id] {
-  return useCustomValues()[id]
-}
+export const CUSTOM_VALUES = GENERATED_CONFIGS.customFields as unknown as CustomValues

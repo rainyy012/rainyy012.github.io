@@ -43,7 +43,8 @@ const config: Config = {
     GITHUB_SHA: process.env.GITHUB_SHA,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     RAIN_GITHUB_IO: process.env.RAIN_GITHUB_IO,
-    DONATE_ETHEREUM_ADDRESS: process.env.DONATE_ETHEREUM_ADDRESS,
+    DONATE_ETH_ADDRESS: process.env.DONATE_ETH_ADDRESS,
+    DONATE_BTC_ADDRESSES: process.env.DONATE_BTC_ADDRESSES.split('\n'),
   },
 
   presets: [

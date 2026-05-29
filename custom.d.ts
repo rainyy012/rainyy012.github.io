@@ -1,10 +1,10 @@
-import { CustomValues } from './src/components/custom-value'
+import { CustomValuesEnv } from './src/components/custom-value'
 
 declare global {
 
   namespace NodeJS {
 
-    interface ProcessEnv extends CustomValues { }
+    interface ProcessEnv extends CustomValuesEnv { }
 
   }
 

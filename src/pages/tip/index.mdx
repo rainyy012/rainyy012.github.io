@@ -1,0 +1,51 @@
+import CodeBlock from '@theme/CodeBlock'
+import QRCode from 'react-qr-code'
+import { BTC_ADDRESS, ETH_ADDRESS } from './addresses'
+
+# Support This Site
+
+Thank you for stopping by.
+
+If you decide to leave a tip, feel free to use one of the options below. It means a lot to me.
+
+<br />
+
+## Ko-fi
+
+<p style={{ opacity: 0.5 }}>(Temporarily unavailable)</p>
+
+<br />
+
+## Cryptocurrency
+
+<br />
+
+### BTC
+
+<details>
+  <summary>Show address:</summary>
+  <CodeBlock language='plaintext'>
+    {BTC_ADDRESS}
+  </CodeBlock>
+  <QRCode
+    size={200}
+    value={BTC_ADDRESS}
+    style={{ backgroundColor: '#ffffff', padding: 20 }}
+  />
+</details>
+
+<br />
+
+### ETH
+
+<details>
+  <summary>Show address:</summary>
+  <CodeBlock language='plaintext'>
+    {ETH_ADDRESS}
+  </CodeBlock>
+  <QRCode
+    size={200}
+    value={ETH_ADDRESS}
+    style={{ backgroundColor: '#ffffff', padding: 20 }}
+  />
+</details>

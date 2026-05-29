@@ -1,11 +1,10 @@
 import React, {useEffect, type ReactNode} from 'react';
 import type {Props} from '@theme/Footer/Copyright';
-import { useCustomValues } from '@site/src/components/custom-value'
+import { CUSTOM_VALUES } from '@site/src/components/custom-value';
 
 export default function FooterCopyright({copyright}: Props): ReactNode {
-  const { GITHUB_SHA } = useCustomValues()
   useEffect(() => {
-    const comment = document.createComment(` Build hash: ${String(GITHUB_SHA)} `)
+    const comment = document.createComment(` Build hash: ${String(CUSTOM_VALUES.GITHUB_SHA)} `)
     document.body.append(comment)
     return () => { comment.remove() }
   }, [])
