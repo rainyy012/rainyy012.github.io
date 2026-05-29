@@ -27,11 +27,13 @@ If you decide to leave a tip, feel free to use one of the options below. It mean
   <CodeBlock language='plaintext'>
     {BTC_ADDRESS}
   </CodeBlock>
-  <QRCode
-    size={200}
-    value={BTC_ADDRESS}
-    style={{ backgroundColor: '#ffffff', padding: 20 }}
-  />
+  {BTC_ADDRESS && (
+    <QRCode
+      size={200}
+      value={BTC_ADDRESS}
+      style={{ backgroundColor: '#ffffff', padding: 20 }}
+    />
+  )}
 </details>
 
 <br />
@@ -43,9 +45,11 @@ If you decide to leave a tip, feel free to use one of the options below. It mean
   <CodeBlock language='plaintext'>
     {ETH_ADDRESS}
   </CodeBlock>
-  <QRCode
-    size={200}
-    value={ETH_ADDRESS}
-    style={{ backgroundColor: '#ffffff', padding: 20 }}
-  />
+  {ETH_ADDRESS && (
+    <QRCode
+      size={200}
+      value={ETH_ADDRESS}
+      style={{ backgroundColor: '#ffffff', padding: 20 }}
+    />
+  )}
 </details>
