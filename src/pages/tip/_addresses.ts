@@ -12,4 +12,6 @@ if (!BTC_ADDRESS) { missingValues.push('BTC_ADDRESS') }
 export const ETH_ADDRESS = CUSTOM_VALUES.DONATE_ETH_ADDRESS
 if (!BTC_ADDRESS) { missingValues.push('ETH_ADDRESS') }
 
-throw new Error(`Missing values: ${missingValues.join(', ')}`)
+if (missingValues.length > 0) {
+  throw new Error(`Missing values: ${missingValues.join(', ')}`)
+}
