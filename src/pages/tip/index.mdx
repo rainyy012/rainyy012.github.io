@@ -1,3 +1,4 @@
+import BrowserOnly from '@docusaurus/BrowserOnly'
 import CodeBlock from '@theme/CodeBlock'
 import QRCode from 'react-qr-code'
 import { BTC_ADDRESS, ETH_ADDRESS } from './_addresses'
@@ -30,16 +31,22 @@ If you decided to leave a tip, feel free to use one of the options below. It mea
 
 <details>
   <summary>Show address:</summary>
-  <CodeBlock language='plaintext'>
-    {BTC_ADDRESS}
-  </CodeBlock>
-  {BTC_ADDRESS && (
-    <QRCode
-      size={200}
-      value={BTC_ADDRESS}
-      style={{ backgroundColor: '#ffffff', padding: 20 }}
-    />
-  )}
+  <BrowserOnly>
+    {() => (
+      <>
+        <CodeBlock language='plaintext'>
+          {BTC_ADDRESS}
+        </CodeBlock>
+        {BTC_ADDRESS && (
+          <QRCode
+            size={200}
+            value={BTC_ADDRESS}
+            style={{ backgroundColor: '#ffffff', padding: 20 }}
+          />
+        )}
+      </>
+    )}
+  </BrowserOnly>
 </details>
 
 <br />
@@ -48,14 +55,20 @@ If you decided to leave a tip, feel free to use one of the options below. It mea
 
 <details>
   <summary>Show address:</summary>
-  <CodeBlock language='plaintext'>
-    {ETH_ADDRESS}
-  </CodeBlock>
-  {ETH_ADDRESS && (
-    <QRCode
-      size={200}
-      value={ETH_ADDRESS}
-      style={{ backgroundColor: '#ffffff', padding: 20 }}
-    />
-  )}
+  <BrowserOnly>
+    {() => (
+      <>
+        <CodeBlock language='plaintext'>
+          {ETH_ADDRESS}
+        </CodeBlock>
+        {ETH_ADDRESS && (
+          <QRCode
+            size={200}
+            value={ETH_ADDRESS}
+            style={{ backgroundColor: '#ffffff', padding: 20 }}
+          />
+        )}
+      </>
+    )}
+  </BrowserOnly>
 </details>
