@@ -99,9 +99,9 @@ const config: Config = {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
-    // mermaid: true,
+    mermaid: true,
   },
-  // themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     // Replace with your project's social card
