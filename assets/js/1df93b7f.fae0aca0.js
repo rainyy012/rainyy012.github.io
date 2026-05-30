@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrains_blog=self.webpackChunkrains_blog||[]).push([["452"],{5146(r,s,e){e.r(s),e.d(s,{default:()=>a});var n=e(1325),u=e(4510);function a(){return(0,n.jsx)(u.rd,{to:"/blog"})}}}]);
