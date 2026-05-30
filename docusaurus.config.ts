@@ -55,9 +55,10 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/rainyy012/rains-blog/tree/dev/docs/',
+          editUrl: 'https://github.com/rainyy012/rainyy012.github.io/tree/dev',
         },
         blog: {
+          // routeBasePath: '/',
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
@@ -65,7 +66,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          // editUrl: 'https://github.com/rainyy012/rains-blog/tree/dev/blog/',
+          // editUrl: 'https://github.com/rainyy012/rainyy012.github.io/tree/dev',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',

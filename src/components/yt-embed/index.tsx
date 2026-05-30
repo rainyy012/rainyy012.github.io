@@ -1,3 +1,4 @@
+import { useWindowSize } from '@docusaurus/theme-common'
 import { ReactNode } from 'react'
 
 export interface YTEmbedProps {
@@ -7,10 +8,10 @@ export interface YTEmbedProps {
 export function YTEmbed({
   videoId,
 }: YTEmbedProps): ReactNode {
+  const windowSize = useWindowSize()
   return (
     <iframe
-      width={560}
-      height={315}
+      {...(windowSize === 'desktop' ? { height: 315, width: 560 } : {})}
       src={`https://www.youtube.com/embed/${videoId}`}
       title="YouTube video player"
       frameBorder={0}

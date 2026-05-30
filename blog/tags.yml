@@ -1,10 +1,6 @@
 campaign:
   label: Campaign
   permalink: /campaign
-
-# journey:
-#   label: Journey
-#   permalink: /journey
   
 memes:
   label: Memes
