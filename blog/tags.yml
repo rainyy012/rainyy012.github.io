@@ -2,9 +2,17 @@ campaign:
   label: Campaign
   permalink: /campaign
   
+fun:
+  label: Fun
+  permalink: /fun
+
 memes:
   label: Memes
   permalink: /memes
+
+research:
+  label: Research
+  permalink: /research
 
 vent:
   label: Vent
