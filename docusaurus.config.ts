@@ -132,7 +132,7 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'More',
+          title: 'Site Links',
           items: [
             {
               label: 'About',
@@ -148,31 +148,31 @@ const config: Config = {
             },
             // Hiding as it doesn't make much sense for now.
             // This is a blog site, not a docs site.
-            // {
-            //   label: 'GitHub',
-            //   href: 'https://github.com/rainyy012',
-            // },
           ],
         },
         {
-          // title: '',
+          title: 'More',
           items: [
             {
-              label: 'External Resources',
-              to: '/docs/external-resources',
+              label: 'Resource List',
+              to: '/docs/resources',
             },
-          ],
-        },
-        {
-          // title: '',
-          items: [
             {
               label: 'Support this site',
               to: '/tip',
             },
+          ],
+        },
+        {
+          title: 'External Links',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/rainyy012/rainyy012.github.io',
+            },
             // {
             //   label: 'Discord',
-            //   to: DISCORD_LINK,
+            //   href: process.env.DISCORD_LINK,
             // },
           ],
         },
