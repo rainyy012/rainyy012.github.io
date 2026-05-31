@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrains_blog=self.webpackChunkrains_blog||[]).push([["8977"],{5738(s){s.exports=JSON.parse('{"categoryGeneratedIndex":{"title":"Glossary","slug":"/category/glossary","permalink":"/docs/category/glossary","sidebar":"glossarySidebar","navigation":{"next":{"title":"Main","permalink":"/docs/glossary/main"}}}}')}}]);

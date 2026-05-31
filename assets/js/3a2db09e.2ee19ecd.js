@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrains_blog=self.webpackChunkrains_blog||[]).push([["3186"],{8070(a){a.exports=JSON.parse('{"tags":[{"label":"Memes","permalink":"/blog/tags/memes","count":1},{"label":"Vent","permalink":"/blog/tags/vent","count":1},{"label":"Campaign","permalink":"/blog/tags/campaign","count":1}]}')}}]);
