@@ -1,0 +1,7 @@
+{
+  "@example": {
+    "scope": "css",
+    "prefix": "import",
+    "body": "import styles from './index.module.css'",
+  },
+}

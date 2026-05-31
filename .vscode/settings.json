@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "js/ts.format.semicolons": "remove",
+  "js/ts.preferences.quoteStyle": "single",
+}
