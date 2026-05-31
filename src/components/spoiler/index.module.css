@@ -1,0 +1,45 @@
+.spoilerText {
+  border-radius: 5px;
+}
+
+.spoilerText[data-hidden="false"] {
+  background-color: transparent;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.spoilerText[data-hidden="true"] {
+  background-color: var(--ifm-font-color-base);
+  color: transparent;
+  cursor: pointer;
+}
+
+.spoilerText[data-hidden="false"] > span {
+  filter: blur(0px);
+  transition: filter 0.75s;
+}
+
+.spoilerText[data-hidden="true"] > span {
+  filter: blur(10px);
+}
+
+.spoilerText[data-hidden="true"]:hover,
+.spoilerText[data-hidden="true"]:focus {
+  background-color: #808080;
+}
+
+.spoilerText[data-hidden="true"]:active {
+  background-color: #80808080;
+}
+
+.spoilerText[data-hidden="true"] *,
+.spoilerText[data-hidden="true"] *:hover,
+.spoilerText[data-hidden="true"] *:focus,
+.spoilerText[data-hidden="true"] *:active {
+  background-color: transparent;
+  border-color: transparent;
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
