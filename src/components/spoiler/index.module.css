@@ -1,5 +1,6 @@
 .spoilerText {
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .spoilerText[data-hidden="false"] {
@@ -12,7 +13,6 @@
 .spoilerText[data-hidden="true"] {
   background-color: var(--ifm-font-color-base);
   color: transparent;
-  cursor: pointer;
 }
 
 .spoilerText[data-hidden="false"] > span {
