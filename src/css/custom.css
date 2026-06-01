@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap');
-
-.fleur-de-leah-regular {
-  font-family: "Fleur De Leah", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 article {
   font-size: 1.15rem;
@@ -23,7 +17,6 @@ hr {
  */
 
 :root {
-
   /* ==========================================================
    * Primary colors
    * ========================================================== */
