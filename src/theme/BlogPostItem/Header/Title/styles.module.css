@@ -1,0 +1,25 @@
+.title {
+  font-size: 3rem;
+}
+
+/**
+  Blog post title should be smaller on smaller devices
+**/
+@media (max-width: 576px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.banner {
+  aspect-ratio: 120 / 63;
+  background-color: #80808020;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.5rem;
+  margin-block-end: 2rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}

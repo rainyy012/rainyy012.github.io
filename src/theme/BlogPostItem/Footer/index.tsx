@@ -6,7 +6,7 @@ import EditMetaRow from '@theme/EditMetaRow';
 import TagsListInline from '@theme/TagsListInline';
 import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { ShareButtons } from '@site/src/components/share-buttons'
+import { ShareButtonsForFooter } from '@site/src/components/share-buttons'
 
 export default function BlogPostItemFooter(): ReactNode {
   const {metadata, isBlogPostPage} = useBlogPost();
@@ -49,7 +49,7 @@ export default function BlogPostItemFooter(): ReactNode {
             </div>
           </div>
         )}
-        <ShareButtons shareUrl={new URL(metadata.permalink, siteConfig.url).href} />
+        <ShareButtonsForFooter shareUrl={new URL(metadata.permalink, siteConfig.url).href} />
         {canDisplayEditMetaRow && (
           <EditMetaRow
             className={clsx(
