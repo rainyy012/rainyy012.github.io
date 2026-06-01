@@ -1,9 +1,9 @@
-import { ReactNode, useEffect, useReducer, useRef } from 'react'
+import { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react'
 import styles from './index.module.css'
 
 const triggerKeys = new Set([' ', 'Enter'])
 
-const showContentReducer = () => true
+const falseToTrueReducer = () => true
 
 export interface SpoilerProps {
   children?: ReactNode
@@ -12,7 +12,15 @@ export interface SpoilerProps {
 export function Spoiler({
   children,
 }: SpoilerProps): ReactNode {
-  const [shouldShowContent, showContent] = useReducer(showContentReducer, false)
+
+  const [shouldInheritCursor, setCursorInheritance] = useReducer(falseToTrueReducer, false)
+  const [shouldShowContent, showContent] = useReducer(falseToTrueReducer, false)
+
+  const onRevealSpoiler = useCallback(() => {
+    showContent()
+    setTimeout(setCursorInheritance, 1000) // for a slightly better UX
+  }, [])
+
   const elementRef = useRef<HTMLElement>(null)
   useEffect(() => {
     if (!elementRef.current) { return }
@@ -27,6 +35,7 @@ export function Spoiler({
     target.addEventListener('keydown', onKeyDown)
     return () => { target.removeEventListener('keydown', onKeyDown) }
   }, [])
+
   return (
     <span
       ref={elementRef}
@@ -34,14 +43,16 @@ export function Spoiler({
       data-hidden={!shouldShowContent}
       aria-expanded={shouldShowContent}
       {...(!shouldShowContent && {
-        onClick: showContent,
+        onClick: onRevealSpoiler,
         title: 'Click to reveal spoiler',
         tabIndex: 0,
       })}
+      style={shouldInheritCursor ? { cursor: 'inherit' } : {}}
     >
       <span>
         {children}
       </span>
     </span>
   )
+
 }

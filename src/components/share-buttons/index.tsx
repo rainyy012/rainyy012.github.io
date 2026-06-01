@@ -1,6 +1,9 @@
 import ClipboardJS from 'clipboard'
+import clsx from 'clsx'
 import {
   CSSProperties,
+  DetailedHTMLProps,
+  HTMLAttributes,
   ReactNode,
   SVGProps,
   useCallback,
@@ -39,80 +42,87 @@ const SHARED_ICON_PROPS: Partial<IconProps> = {
   round: true,
 }
 
-export interface ShareButtonsProps {
+export interface ShareButtonsProps extends Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'children'> {
   shareUrl: string
 }
 
 export function ShareButtons({
   shareUrl,
+  className,
+  ...props
+}: ShareButtonsProps): ReactNode {
+  return (
+    <div className={clsx(styles.iconsContainer, className)} {...props}>
+
+      <BlueskyShareButton
+        url={shareUrl}
+        aria-label='Share on Bluesky'
+      // title={title}
+      >
+        <BlueskyIcon {...SHARED_ICON_PROPS} />
+      </BlueskyShareButton>
+
+      <FacebookShareButton
+        url={shareUrl}
+        aria-label='Share on Facebook'
+      >
+        <FacebookIcon {...SHARED_ICON_PROPS} />
+      </FacebookShareButton>
+
+      <ThreadsShareButton
+        url={shareUrl}
+        aria-label='Share on Threads'
+      // title={title}
+      >
+        <ThreadsIcon {...SHARED_ICON_PROPS} />
+      </ThreadsShareButton>
+
+      <RedditShareButton
+        url={shareUrl}
+        aria-label='Share on Reddit'
+      // title={title}
+      >
+        <RedditIcon {...SHARED_ICON_PROPS} />
+      </RedditShareButton>
+
+      <TelegramShareButton
+        url={shareUrl}
+        aria-label='Share on Telegram'
+      // title={title}
+      >
+        <TelegramIcon {...SHARED_ICON_PROPS} />
+      </TelegramShareButton>
+
+      <LineShareButton
+        url={shareUrl}
+        aria-label='Share on Line'
+      // title={title}
+      >
+        <LineIcon {...SHARED_ICON_PROPS} />
+      </LineShareButton>
+
+      <WhatsappShareButton
+        url={shareUrl}
+        aria-label='Share on WhatsApp'
+      // title={title}
+      >
+        <WhatsappIcon {...SHARED_ICON_PROPS} />
+      </WhatsappShareButton>
+
+      <CopyButton url={shareUrl} />
+
+    </div>
+  )
+}
+
+export function ShareButtonsForFooter({
+  shareUrl,
 }: ShareButtonsProps): ReactNode {
   // const title = 'Read this next'
   return (
     <div className={styles.container}>
-
       <b>Share this article:</b>
-
-      <div className={styles.iconsContainer}>
-
-        <BlueskyShareButton
-          url={shareUrl}
-          aria-label='Share on Bluesky'
-        // title={title}
-        >
-          <BlueskyIcon {...SHARED_ICON_PROPS} />
-        </BlueskyShareButton>
-
-        <FacebookShareButton
-          url={shareUrl}
-          aria-label='Share on Facebook'
-        >
-          <FacebookIcon {...SHARED_ICON_PROPS} />
-        </FacebookShareButton>
-
-        <ThreadsShareButton
-          url={shareUrl}
-          aria-label='Share on Threads'
-        // title={title}
-        >
-          <ThreadsIcon {...SHARED_ICON_PROPS} />
-        </ThreadsShareButton>
-
-        <RedditShareButton
-          url={shareUrl}
-          aria-label='Share on Reddit'
-        // title={title}
-        >
-          <RedditIcon {...SHARED_ICON_PROPS} />
-        </RedditShareButton>
-
-        <TelegramShareButton
-          url={shareUrl}
-          aria-label='Share on Telegram'
-        // title={title}
-        >
-          <TelegramIcon {...SHARED_ICON_PROPS} />
-        </TelegramShareButton>
-
-        <LineShareButton
-          url={shareUrl}
-          aria-label='Share on Line'
-        // title={title}
-        >
-          <LineIcon {...SHARED_ICON_PROPS} />
-        </LineShareButton>
-
-        <WhatsappShareButton
-          url={shareUrl}
-          aria-label='Share on WhatsApp'
-        // title={title}
-        >
-          <WhatsappIcon {...SHARED_ICON_PROPS} />
-        </WhatsappShareButton>
-
-        <CopyButton url={shareUrl} />
-
-      </div>
-
+      <ShareButtons shareUrl={shareUrl} />
     </div>
   )
 }
