@@ -1,6 +1,6 @@
 import React, {useEffect, type ReactNode} from 'react';
 import type {Props} from '@theme/Footer/Copyright';
-import { CUSTOM_VALUES } from '@site/src/components/custom-value';
+import { CUSTOM_VALUES } from '@site/src/constants';
 
 export default function FooterCopyright({copyright}: Props): ReactNode {
   useEffect(() => {
