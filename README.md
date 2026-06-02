@@ -1,6 +1,8 @@
-# Website
+# https://rainyy012.github.io
 
-This site is available at https://rainyy012.github.io
+[![CodeQL Advanced](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/codeql.yml/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/codeql.yml)<br />
+[![GitHub Pages](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/gh-pages.yml)<br />
+[![Pages Build Deployment](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/pages/pages-build-deployment)<br />
 
 ## Installation
 
@@ -14,7 +16,8 @@ pnpm install
 pnpm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server (at port 3000 by default).
+Most changes are reflected live without having to restart the server.
 
 ## Build
 
@@ -22,11 +25,17 @@ This command starts a local development server and opens up a browser window. Mo
 pnpm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `build` directory and can be served locally by running:
+
+```bash
+pnpm run serve
+```
 
 ## Contribution Guide
-- Please clone the `dev` branch and create pull requests that merge back into the `dev` branch
-- Commits should be in lowercase and use one of the prefixes below:
+
+Please clone the `dev` branch and create pull requests that merge back into the `dev` branch
+
+Commits should be in lowercase and use one of the prefixes below:
 
 | Prefix   | Usage                                          | Example                                 |
 | -------- | ---------------------------------------------- | --------------------------------------- |
