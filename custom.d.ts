@@ -1,4 +1,4 @@
-import { CustomValuesEnv } from './src/components/custom-value'
+import { CustomValuesEnv } from './src/constants'
 
 declare global {
 

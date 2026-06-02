@@ -1,4 +1,4 @@
-import { CUSTOM_VALUES } from '@site/src/components/custom-value'
+import { CUSTOM_VALUES } from '@site/src/constants'
 import seedrandom from 'seedrandom'
 
 const missingValues: Array<string> = []
