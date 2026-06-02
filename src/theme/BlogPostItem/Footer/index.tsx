@@ -31,6 +31,8 @@ export default function BlogPostItemFooter(): ReactNode {
   //   return null;
   // }
 
+  const shareUrl = new URL(metadata.permalink, siteConfig.url).href
+
   // BlogPost footer - details view
   if (isBlogPostPage) {
     const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
@@ -49,7 +51,7 @@ export default function BlogPostItemFooter(): ReactNode {
             </div>
           </div>
         )}
-        <ShareButtonsForFooter shareUrl={new URL(metadata.permalink, siteConfig.url).href} />
+        <ShareButtonsForFooter shareUrl={shareUrl} />
         {canDisplayEditMetaRow && (
           <EditMetaRow
             className={clsx(
@@ -68,11 +70,10 @@ export default function BlogPostItemFooter(): ReactNode {
   else {
     return (
       <footer className="row docusaurus-mt-lg">
-        {tagsExists && (
-          <div className={clsx('col', {'col--9': truncatedPost})}>
-            <TagsListInline tags={tags} />
-          </div>
-        )}
+        <div className={clsx('col', {'col--9': truncatedPost})}>
+          {tagsExists && <TagsListInline tags={tags} />}
+          <ShareButtonsForFooter shareUrl={shareUrl} />
+        </div>
         {truncatedPost && (
           <div
             className={clsx('col text--right', {

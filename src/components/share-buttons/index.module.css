@@ -1,13 +1,19 @@
 .container {
-  display: grid;
-  gap: 10px;
-  justify-self: start;
-}
-
-.iconsContainer {
   align-items: center;
   display: grid;
   gap: 10px;
   grid-auto-columns: max-content;
   grid-auto-flow: column;
+}
+
+.containerForFooter {
+  display: grid;
+  gap: 10px;
+  justify-self: start;
+}
+
+.containerForFooter[data-is-mobile="false"] {
+  align-items: end;
+  grid-auto-flow: column;
+  margin-block-start: 0.5em;
 }

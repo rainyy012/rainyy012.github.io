@@ -1,3 +1,4 @@
+import { useWindowSize } from '@docusaurus/theme-common'
 import ClipboardJS from 'clipboard'
 import clsx from 'clsx'
 import {
@@ -52,7 +53,7 @@ export function ShareButtons({
   ...props
 }: ShareButtonsProps): ReactNode {
   return (
-    <div className={clsx(styles.iconsContainer, className)} {...props}>
+    <div className={clsx(styles.container, className)} {...props}>
 
       <BlueskyShareButton
         url={shareUrl}
@@ -118,9 +119,13 @@ export function ShareButtons({
 export function ShareButtonsForFooter({
   shareUrl,
 }: ShareButtonsProps): ReactNode {
+  const windowsize = useWindowSize()
   // const title = 'Read this next'
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.containerForFooter}
+      data-is-mobile={windowsize === 'mobile'}
+    >
       <b>Share this article:</b>
       <ShareButtons shareUrl={shareUrl} />
     </div>
