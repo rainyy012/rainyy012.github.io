@@ -1,8 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 
-export type SarcasmMarkerProps = Omit<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>, 'children' | 'title'>
+export type SarcasmProps = Omit<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>, 'children' | 'title'>
 
-export function SarcasmMarker(props: SarcasmMarkerProps): ReactNode {
+export function Sarcasm(props: SarcasmProps): ReactNode {
   return (
     <abbr title='sarcasm' {...props}>
       {'/s'}

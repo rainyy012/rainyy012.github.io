@@ -17,6 +17,7 @@ export default function BlogPostItemFooter(): ReactNode {
     hasTruncateMarker,
     lastUpdatedBy,
     lastUpdatedAt,
+    frontMatter,
   } = metadata;
   const { siteConfig } = useDocusaurusContext()
 
@@ -35,7 +36,7 @@ export default function BlogPostItemFooter(): ReactNode {
 
   // BlogPost footer - details view
   if (isBlogPostPage) {
-    const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
+    const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy) && String(frontMatter.custom_allow_editing).toLowerCase() === 'true';
 
     return (
       <footer className="docusaurus-mt-lg">
@@ -51,7 +52,10 @@ export default function BlogPostItemFooter(): ReactNode {
             </div>
           </div>
         )}
-        <ShareButtonsForFooter shareUrl={shareUrl} />
+        <ShareButtonsForFooter
+          shareUrl={shareUrl}
+          shareItemType={frontMatter.custom_share_type as string | undefined}
+        />
         {canDisplayEditMetaRow && (
           <EditMetaRow
             className={clsx(
@@ -72,7 +76,10 @@ export default function BlogPostItemFooter(): ReactNode {
       <footer className="row docusaurus-mt-lg">
         <div className={clsx('col', {'col--9': truncatedPost})}>
           {tagsExists && <TagsListInline tags={tags} />}
-          <ShareButtonsForFooter shareUrl={shareUrl} />
+          <ShareButtonsForFooter
+            shareUrl={shareUrl}
+            shareItemType={frontMatter.custom_share_type as string | undefined}
+          />
         </div>
         {truncatedPost && (
           <div

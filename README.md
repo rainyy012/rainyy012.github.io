@@ -33,20 +33,34 @@ pnpm run serve
 
 ## Contribution Guide
 
-Please clone the `dev` branch and create pull requests that merge back into the `dev` branch
+Please clone or fork from the `dev` branch.
+
+- For forks, it is fine to keep the branch name as `dev`
+- For clones, it is preferred that the branch names use one of the following prefixes:
+
+| Prefix      | Usage                 | Example                       |
+| ----------- | --------------------- | ----------------------------- |
+| `dev-`      | General development   | `dev-custom-markdown-wrapper` |
+| `fix-`      | Bug-fixing            | `fix-broken-export`           |
+| `doc`       | Documentation-related | `doc-update-readme`           |
+| `refactor-` | Code refactoring      | `refactor-env-variables`      |
+
 
 Commits should be in lowercase and use one of the prefixes below:
 
-| Prefix   | Usage                                          | Example                                 |
-| -------- | ---------------------------------------------- | --------------------------------------- |
-| fix      | Bug-fixing                                     | `fix: broken export`                    |
-| chore    | Tasks that don't change how the site functions | `chore: added codeql advanced workflow` |
-| feat     | Feature-related                                | `feat: added footer tip link`           |
-| doc      | Documentation-related                          | `doc: updated readme`                   |
-| refactor | Code refactoring                               | `refactor: env variables`               |
+| Prefix     | Usage                                          | Example                                 |
+| ---------- | ---------------------------------------------- | --------------------------------------- |
+| `fix`      | Bug-fixing                                     | `fix: broken export`                    |
+| `chore`    | Tasks that don't change how the site functions | `chore: added codeql advanced workflow` |
+| `feat`     | Feature-related                                | `feat: added footer tip link`           |
+| `doc`      | Documentation-related                          | `doc: updated readme`                   |
+| `refactor` | Code refactoring                               | `refactor: env variables`               |
 
 Other internally reserved prefixes (please do not use):
+
 | Prefix | Usage                         | Example                                            |
 | ------ | ----------------------------- | -------------------------------------------------- |
-| bulk   | Miscellaneous bulk operations | `bulk: fixed false build warnings, ux refinements` |
-| post   | New post creation             | `post: hello world`                                |
+| `bulk` | Miscellaneous bulk operations | `bulk: fixed false build warnings, ux refinements` |
+| `post` | New post creation             | `post: hello world`                                |
+
+Lastly, when creating create pull requests, please set `dev` as the branch target.

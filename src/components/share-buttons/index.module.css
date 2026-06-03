@@ -9,11 +9,14 @@
 .containerForFooter {
   display: grid;
   gap: 10px;
+  justify-items: start;
   justify-self: start;
 }
 
 .containerForFooter[data-is-mobile="false"] {
   align-items: end;
   grid-auto-flow: column;
+  grid-auto-columns: max-content;
   margin-block-start: 0.5em;
+  margin-block-end: 1em;
 }

@@ -6,9 +6,17 @@ fun:
   label: Fun
   permalink: /fun
 
+knowledge:
+  label: Knowledge
+  permalink: /knowledge
+
 memes:
   label: Memes
   permalink: /memes
+
+quiz:
+  label: Quiz
+  permalink: /quiz
 
 research:
   label: Research
