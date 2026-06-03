@@ -116,17 +116,23 @@ export function ShareButtons({
   )
 }
 
+export interface ShareButtonsForFooterProps extends ShareButtonsProps {
+  shareItemType?: string | undefined | null
+}
+
 export function ShareButtonsForFooter({
   shareUrl,
-}: ShareButtonsProps): ReactNode {
+  shareItemType,
+}: ShareButtonsForFooterProps): ReactNode {
   const windowsize = useWindowSize()
   // const title = 'Read this next'
+  shareItemType ||= 'article'
   return (
     <div
       className={styles.containerForFooter}
       data-is-mobile={windowsize === 'mobile'}
     >
-      <b>Share this article:</b>
+      <b>Share this {shareItemType}:</b>
       <ShareButtons shareUrl={shareUrl} />
     </div>
   )

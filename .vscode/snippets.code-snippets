@@ -1,6 +1,6 @@
 {
   "Import CSS Modules": {
-    "scope": "css",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "prefix": "import",
     "body": "import styles from './index.module.css'",
   },

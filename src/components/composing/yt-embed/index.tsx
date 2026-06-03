@@ -15,10 +15,10 @@ export function YTEmbed({
       <iframe
         {...(windowSize === 'desktop' ? { height: 315, width: 560 } : {})}
         src={`https://www.youtube.com/embed/${videoId}`}
-        title="YouTube video player"
+        title='YouTube video player'
         frameBorder={0}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+        referrerPolicy='strict-origin-when-cross-origin'
         allowFullScreen
       />
     </div>
