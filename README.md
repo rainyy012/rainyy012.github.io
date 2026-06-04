@@ -61,6 +61,6 @@ Other internally reserved prefixes (please do not use):
 | Prefix | Usage                         | Example                                            |
 | ------ | ----------------------------- | -------------------------------------------------- |
 | `bulk` | Miscellaneous bulk operations | `bulk: fixed false build warnings, ux refinements` |
-| `post` | New post creation             | `post: hello world`                                |
+| `blog` | New post creation             | `blog: hello world`                                |
 
 Lastly, when creating create pull requests, please set `dev` as the branch target.
