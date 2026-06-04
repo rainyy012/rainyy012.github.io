@@ -36,7 +36,7 @@ export default function BlogPostItemFooter(): ReactNode {
 
   // BlogPost footer - details view
   if (isBlogPostPage) {
-    const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy) && String(frontMatter.custom_allow_editing).toLowerCase() === 'true';
+    const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy) && String(frontMatter.custom_show_edit_link).toLowerCase() === 'true';
 
     return (
       <footer className="docusaurus-mt-lg">

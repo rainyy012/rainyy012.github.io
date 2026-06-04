@@ -1,4 +1,5 @@
 import { isEmptyObject } from '@site/src/utils/is-empty-object'
+import { CustomToast } from '@site/src/utils/toast'
 import { produce } from 'immer'
 import {
   Children,
@@ -6,12 +7,9 @@ import {
   ReactElement,
   MouseEvent as ReactMouseEvent,
   ReactNode,
-  startTransition,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react'
 import { MdCheck as CorrectIcon, MdClose as WrongIcon } from 'react-icons/md'
@@ -83,12 +81,12 @@ export function MultipleChoiceQuestionSet({
           if (persistedRevision === revision) {
             // If revision numbers don't match, persisted data will remain in the localStorage
             // unless new answers have been chosen. This is just in case of bug.
-            // TODO: (low priority) should we show an warning banner?
             return data
+          } else {
+            CustomToast.info('Previous answers are not restored because some questions have been revised.')
           }
         } catch (error) {
-          // TODO: (low priority) should we show an error banner?
-          console.log('Unable to restore saved answers')
+          CustomToast.error('Unable to restore previously saved answers')
           console.error(error)
         }
       }
@@ -96,27 +94,14 @@ export function MultipleChoiceQuestionSet({
     return {}
   })
 
-  console.log('selectedAnswers', selectedAnswers)
-  const persistedAnswersRef = useRef(selectedAnswers)
-  useEffect(() => {
-    for (const questionId in persistedAnswersRef.current) {
-      console.log('questionId', questionId)
-      const answerId = persistedAnswersRef.current[questionId]
-      const element = document.getElementById(answerId) as HTMLInputElement
-      console.log('element', element)
-      element?.click()
-    }
-  }, [])
-
   const onSelectAnswer = useCallback((
-    event: ReactMouseEvent<HTMLInputElement, MouseEvent>,
     questionId: string,
     answerId: string,
     isCorrect: boolean,
   ) => {
     setSelectedAnswers(produce((answers) => {
       answers[questionId] = answerId
-      if (storageKey && event.isTrusted) {
+      if (storageKey) {
         localStorage.setItem(storageKey, serializeAnswers(answers, revision))
       }
     }))
@@ -166,10 +151,7 @@ export function MultipleChoiceQuestionSet({
             localStorage.removeItem(storageKey)
           }
           setScoreMap(new ScoreMap())
-          startTransition(() => {
-            // It seems like the state change interferes with HTML form reset.
-            setSelectedAnswers({})
-          })
+          setSelectedAnswers({})
         } else {
           event.preventDefault()
         }
@@ -216,7 +198,6 @@ interface IQuestionContext {
   questionId: string
   selectedAnswer: string
   onSelectAnswer(
-    event: ReactMouseEvent<HTMLInputElement, MouseEvent>,
     questionId: string,
     answerId: string,
     isCorrect: boolean,
@@ -292,9 +273,7 @@ export function MultipleChoiceQuestion({
         value={{
           questionId,
           answerId,
-          onSelect(event: ReactMouseEvent<HTMLInputElement, MouseEvent>) {
-            onSelectAnswer(event, questionId, answerId, !!isCorrect)
-          }
+          onSelect() { onSelectAnswer(questionId, answerId, !!isCorrect) }
         }}
       >
         {child}
@@ -343,7 +322,7 @@ export function MultipleChoiceQuestion({
 interface IChoiceContext {
   questionId: string
   answerId: string
-  onSelect(event: ReactMouseEvent<HTMLInputElement, MouseEvent>): void
+  onSelect(): void
 }
 
 const ChoiceContext = createContext<IChoiceContext | null>(null)
@@ -365,6 +344,7 @@ export interface ChoiceProps {
 export function Choice({
   children,
 }: ChoiceProps): ReactNode {
+  const { selectedAnswer } = useContext(QuestionContext)!
   const context = useContext(ChoiceContext)
   if (!context) {
     throw new Error('<Choice> can only be used inside <MultipleChoiceQuestion>')
@@ -376,8 +356,9 @@ export function Choice({
         type='radio'
         id={answerId}
         value={answerId}
+        checked={selectedAnswer === answerId}
         name={questionId}
-        onClick={onSelect}
+        onChange={onSelect}
       />
       <label htmlFor={answerId}>{children}</label>
     </li>
