@@ -1,11 +1,16 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
-import { themes as prismThemes } from 'prism-react-renderer'
 import { config as dotEnvConfig } from 'dotenv'
+import { existsSync } from 'fs'
+import { themes as prismThemes } from 'prism-react-renderer'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-dotEnvConfig({ path: '.env.local' })
+const ENV_LOCAL = '.env.local'
+
+if (existsSync(ENV_LOCAL)) {
+  dotEnvConfig({ path: ENV_LOCAL })
+}
 
 const config: Config = {
   title: 'Rain\'s Blog',
@@ -44,7 +49,7 @@ const config: Config = {
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     RAIN_GITHUB_IO: process.env.RAIN_GITHUB_IO,
     DONATE_ETH_ADDRESS: process.env.DONATE_ETH_ADDRESS,
-    DONATE_BTC_ADDRESSES: process.env.DONATE_BTC_ADDRESSES.split('\n'),
+    DONATE_BTC_ADDRESSES: String(process.env.DONATE_BTC_ADDRESSES).split('\n'),
   },
 
   presets: [
