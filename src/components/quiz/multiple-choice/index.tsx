@@ -10,6 +10,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -22,11 +23,30 @@ import styles from './index.module.css'
 
 const STORAGE_KEY_PREFIX = 'quiz/mcq/'
 
+function serializeAnswers(data: Record<string, string>, revision: number): string {
+  return JSON.stringify({ revision, data })
+}
+
+interface ISerializableAnswers {
+  data: Record<string, string>
+  revision: number
+}
+
+function parseAnswers(serializedData: string): ISerializableAnswers {
+  return JSON.parse(serializedData)
+}
+
 export interface MultipleChoiceQuestionSetProps {
   children?: ReactNode
   overwriteCorrectText?: ReactNode
   overwriteWrongText?: ReactNode
   persistenceKey?: string
+  /**
+   * This allows the question set to ignore previously saved answers if there is
+   * a revision (changes made to the questions).
+   * @defaultValue `1`
+   */
+  revision?: number
 }
 
 export function MultipleChoiceQuestionSet({
@@ -34,7 +54,22 @@ export function MultipleChoiceQuestionSet({
   overwriteCorrectText: correctText = 'That is correct!',
   overwriteWrongText: wrongText = 'Try again?',
   persistenceKey,
+  revision: $revision,
 }: MultipleChoiceQuestionSetProps): ReactNode {
+
+  const revision = useMemo(() => {
+    if ($revision) {
+      if ($revision < 1) {
+        throw new Error('Revision number must be at least 1')
+      }
+      if ($revision !== Math.round($revision)) {
+        throw new Error('Revision number cannot be a decimal')
+      }
+      return $revision
+    } else {
+      return 1
+    }
+  }, [$revision])
 
   const storageKey = persistenceKey ? (STORAGE_KEY_PREFIX + persistenceKey) : undefined
 
@@ -44,8 +79,15 @@ export function MultipleChoiceQuestionSet({
       const rawPersistedAnswers = localStorage.getItem(storageKey)
       if (rawPersistedAnswers) {
         try {
-          return JSON.parse(rawPersistedAnswers)
+          const { revision: persistedRevision, data } = parseAnswers(rawPersistedAnswers)
+          if (persistedRevision === revision) {
+            // If revision numbers don't match, persisted data will remain in the localStorage
+            // unless new answers have been chosen. This is just in case of bug.
+            // TODO: (low priority) should we show an warning banner?
+            return data
+          }
         } catch (error) {
+          // TODO: (low priority) should we show an error banner?
           console.log('Unable to restore saved answers')
           console.error(error)
         }
@@ -54,12 +96,15 @@ export function MultipleChoiceQuestionSet({
     return {}
   })
 
+  console.log('selectedAnswers', selectedAnswers)
   const persistedAnswersRef = useRef(selectedAnswers)
   useEffect(() => {
     for (const questionId in persistedAnswersRef.current) {
+      console.log('questionId', questionId)
       const answerId = persistedAnswersRef.current[questionId]
       const element = document.getElementById(answerId) as HTMLInputElement
-      element.click()
+      console.log('element', element)
+      element?.click()
     }
   }, [])
 
@@ -72,13 +117,13 @@ export function MultipleChoiceQuestionSet({
     setSelectedAnswers(produce((answers) => {
       answers[questionId] = answerId
       if (storageKey && event.isTrusted) {
-        localStorage.setItem(storageKey, JSON.stringify(answers))
+        localStorage.setItem(storageKey, serializeAnswers(answers, revision))
       }
     }))
     setScoreMap((prevScoreMap) => {
       return new ScoreMap(prevScoreMap).set(questionId, isCorrect)
     })
-  }, [storageKey])
+  }, [revision, storageKey])
 
   const conflictingIds = new Set<string>()
   const questionIds = new Set<string>()
@@ -262,7 +307,7 @@ export function MultipleChoiceQuestion({
   }
 
   if (correctAnswers.size <= 0) {
-    throw new Error(`<MultipleChoiceQuestion> must have at least one <Choice> where \`isAnswer={true}\`\nText: "${text}"`)
+    throw new Error(`<MultipleChoiceQuestion> must have at least one <Choice> where \`isCorrect={true}\`\nText: "${text}"`)
   }
   const isCorrectAnswerSelected = selectedAnswer ? correctAnswers.has(selectedAnswer) : false
 
