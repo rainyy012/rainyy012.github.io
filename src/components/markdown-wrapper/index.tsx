@@ -10,8 +10,7 @@ import MDXUl from '@theme/MDXComponents/Ul'
 import { MDXComponents } from 'mdx/types'
 import { ComponentProps, ComponentType, lazy, ReactNode, Suspense, useMemo } from 'react'
 import * as runtime from 'react/jsx-runtime'
-import { Spoiler } from '../spoiler'
-import { YTEmbed } from '../yt-embed'
+import { Spoiler, YTEmbed } from '../composing'
 
 export interface MarkdownWrapperProps {
   children: string
@@ -25,6 +24,7 @@ export function MarkdownWrapper({
   }, [children])
   return (
     <Suspense>
+      {/* eslint-disable-next-line react-hooks/static-components */}
       <CompiledContent components={CUSTOM_COMPONENTS} />
     </Suspense>
   )
