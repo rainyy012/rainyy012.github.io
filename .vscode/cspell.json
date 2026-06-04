@@ -1,6 +1,7 @@
 {
   "ignorePaths": [
-    "pnpm-lock.yaml"
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
   ],
   "ignoreRegExpList": [
     "videoId={?[\"'][a-zA-z0-9_-]+[\"']}?"
