@@ -112,9 +112,16 @@ export function ShareButtons({
 
       <CopyButton url={shareUrl} />
 
+      <NativeShareButton url={shareUrl} />
+
     </div>
   )
 }
+
+const VALID_SHARE_ITEM_TYPES = new Set([
+  'article',
+  'quiz',
+])
 
 export interface ShareButtonsForFooterProps extends ShareButtonsProps {
   shareItemType?: string | undefined | null
@@ -127,6 +134,9 @@ export function ShareButtonsForFooter({
   const windowsize = useWindowSize()
   // const title = 'Read this next'
   shareItemType ||= 'article'
+  if (!VALID_SHARE_ITEM_TYPES.has(shareItemType)) {
+    throw new Error(`Expected \`shareItemType\` to be one of ["${[...VALID_SHARE_ITEM_TYPES].join('", "')}"] but got "${shareItemType}"`)
+  }
   return (
     <div
       className={styles.containerForFooter}
@@ -191,6 +201,19 @@ function CopyButton({ url }: CopyButtonProps): ReactNode {
           fill='white'
         />
       </svg>
+    </button>
+  )
+}
+
+interface NativeShareButtonProps {
+  url: string
+}
+
+function NativeShareButton({ url }: NativeShareButtonProps): ReactNode {
+  // TODO: navigator.share
+  return (
+    <button>
+      {'...'}
     </button>
   )
 }
