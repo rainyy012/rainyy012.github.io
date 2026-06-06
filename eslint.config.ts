@@ -16,13 +16,6 @@ module.exports = defineConfig(
       '@typescript-eslint/no-require-imports': Severity.OFF,
       'import/no-unresolved': Severity.OFF, // Let TS handle broken imports
       'no-console': Severity.OFF,
-      'no-restricted-imports': [Severity.ERROR, {
-        name: 'react-toastify',
-        importNames: [
-          'toast',
-        ],
-        message: 'Please import { CustomToast } from \'@site/src/utils/toast\' instead',
-      }],
     },
   },
   {

@@ -1,0 +1,138 @@
+---
+slug: pride-month-quiz
+title: Pride Month Quiz
+authors: [rain]
+tags: [knowledge, quiz]
+image: /banners/2026-06-07-prize-month-quiz.webp
+custom_show_edit_link: true
+custom_share_type: quiz
+---
+
+import {
+  Choice,
+  MultipleChoiceQuestion,
+  MultipleChoiceQuestionSet,
+} from '@site/src/components/quiz/multiple-choice'
+
+Here are 10 questions to test your knowledge about pride month and the queer space in general.
+This includes questions about the community, history, media, etc.
+Think you know all the answers? Give it a try!
+
+Don't worry, you are free to change the answers any time.
+In fact, please try clicking on other answers even if you got it correct.
+Interesting facts about the other answers will be revealed.
+Yes, that includes the last question.
+
+{/* truncate */}
+
+:::info
+All answers are only persisted in the browser's [local storage](https://www.w3schools.com/jsref/prop_win_localstorage.asp).
+:::
+
+## Questions
+
+<MultipleChoiceQuestionSet persistenceKey='pride2026' revision={1}>
+
+  <MultipleChoiceQuestion text='What does "G" in "LGBTQIA+" stand for?'>
+    <Choice explanation={'Gender is an important aspect here, but that\'s not what it represents here.'}>Gender</Choice>
+    <Choice explanation='Remember to be generous and show kindness to one another, just as you would to yourself, okay?'>Generous</Choice>
+    <Choice isCorrect explanation='"LGBTQIA+" is short for Lesbian, Gay, Bisexual, Transgender, Queer, Intersex, Asexual, (and inclusive of many others).'>Gay</Choice>
+    <Choice explanation={'This is a global movement that isn\'t tied to any specific geography. Try again?'}>Geography</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='In which year did Pride Month begin to receive recognition and celebration?'>
+    <Choice explanation='This is the year President Barack Obama expanded the official Pride Month to include the whole of the LGBTQ community.'>2011</Choice>
+    <Choice explanation='This is the year when President Bill Clinton issued a presidential proclamation declaring June “Gay and Lesbian Pride Month”.'>1999</Choice>
+    <Choice explanation={'This is the year Deborah Batts was sworn in as a U.S. district judge for Manhattan, becoming the nation\'s first openly LGBT federal judge.'}>1994</Choice>
+    <Choice isCorrect explanation='While there are many years associated to pride celebration, most people consider The Stonewall Uprising to be the key event that started it all.'>1969</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text={'What is the title of the book published by Robert Swope and Michel Hurst that documented America\'s first-known trans network?'}>
+    <Choice isCorrect explanation={'That\'s the correct answer! By the way, if you happen to be looking for books to read, why not try one of the other books listed here?'}>Casa Susanna</Choice>
+    <Choice explanation='This is a literary fiction written by Elvin James Mensah.'>Small Joys</Choice>
+    <Choice explanation='While also somewhat related to photography, this book was published by Matthew Riemer and Leighton Brown in 2019.'>We Are Everywhere</Choice>
+    <Choice explanation='This book is a collection of various records that documented both the years leading up to and the years following the riots at Stonewall, New York.'>The Stonewall Reader</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='Which of the support groups/organizations listed below are international?'>
+    <Choice explanation='Beyond the Rainbow Foundation is a LGBTQ+ support organization in Korea.'>Beyond the Rainbow Foundation</Choice>
+    <Choice isCorrect explanation='ILGA is an international organization with huge network across the globe.'>ILGA</Choice>
+    <Choice explanation='Justice for Sisters is an LGBTIQ and gender-diverse human rights group in Malaysia.'>Justice for Sisters</Choice>
+    <Choice explanation='QLife is an anonymous peer-support and referral service in Australia.'>QLife</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='Which is the first country in Asia to legally recognize same-sex marriage?'>
+    <Choice explanation={'Nepal\'s first same-sex marriage was registered in 2023, however, efforts to change the civil code of the country to make same-sex marriage fully legally recognized is still ongoing.'}>Nepal</Choice>
+    <Choice explanation='In 2024, a marriage equality bill was approved in Thailand and the law came into effect in 2025.'>Thailand</Choice>
+    <Choice explanation='Legal recognition of same-sex marriage is still being considered in Japan.'>Japan</Choice>
+    <Choice isCorrect explanation='Taiwan is the first country in Asia to legally recognize same-sex marriage.'>Taiwan</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='What is the most common therapy seeked by transgender and intersex individuals called?'>
+    <Choice explanation={<>Conversion therapy is a <b><i>very</i></b> inhuman pseudoscientific practice that involves coercion. Just don't.</>}>Conversion therapy</Choice>
+    <Choice explanation='This is the therapy that uses radiation to get rid of cancer cells and shrink tumors.'>Radiotherapy</Choice>
+    <Choice isCorrect explanation='Or HRT for short. It is also sometimes known as Gender-affirming hormone therapy (GAHT).'>Hormone replacement therapy</Choice>
+    <Choice explanation='This is generally used to treat anxiety and depression.'>Cognitive Behavioral Therapy</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text={<>Which of the following is <i>not</i> a LGBT-themed show?</>}>
+    <Choice explanation='The Danish Girl is a biographical romantic drama film based on a novel of the same title in 2000.'>The Danish Girl (2015)</Choice>
+    <Choice isCorrect explanation='This is a science fiction movie about a linguistics professor being recruited by the military after colossal alien spacecrafts appear across Earth.'>Arrival (2016)</Choice>
+    <Choice explanation='This is a romance movie that tells a story about two young men in Italy in the time setting of 1983.'>Call Me By Your Name (2017)</Choice>
+    <Choice explanation={'This is a Japanese animation that revolves around yuri (girls\' love) themes.'}>Botan Kamiina Fully Blossoms When Drunk (2026)</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='Who designed the original rainbow flag in 1978?'>
+    <Choice explanation='Liz Nania designed "The Biangles" in 1985.'>Liz Nania</Choice>
+    <Choice isCorrect explanation='Did you also know that the original flag consisted of these 8 colors: hot pink, red, orange, yellow, green, turquoise, indigo, and violet?'>Gilbert Baker</Choice>
+    <Choice explanation='Daniel Quasar designed a modified version which is known as the Progress Pride flag in 2018.'>Daniel Quasar</Choice>
+    <Choice explanation='Valentino Vecchietti designed a modified version which is known as the intersex-inclusive Progress Pride flag in 2021.'>Valentino Vecchietti</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='Among the statements below, select the most fitting answer about something that most LGBTQ+ support organizations have in common?'>
+    <Choice explanation={'While it\'s true that a lot of these websites adopt vibrant theme colors, it is not necessary that they all follow the same color palette.'}>The appearances of these websites are themed based on the colors of the pride flag</Choice>
+    <Choice explanation='Nope, these donations are accepted through conventional/commercial methods. Have you perhaps confused this with something else? 👀'>They usually accept donations in the form of cryptocurrencies</Choice>
+    <Choice explanation='These are all normal websites that can be accessed through normal browsers.'>These websites can only be accessed using The Onion Browser</Choice>
+    <Choice isCorrect explanation={'That\'s correct! There\'s usually a keyboard shortcut or a floating button on the website that takes you to a random page when activated.'}>There is an emergency "eject" shortcut that takes you out of their website for privacy and safety</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='What is the symbol adopted to represent the LGBTQ+ community that was originally meant as a symbol of shame for prisoners in the past?'>
+    <Choice isCorrect explanation='The pink triangle was used to identify homosexual prisoners in Nazi German concentration camps.'>Pink triangle</Choice>
+    <Choice explanation='The red triangle was used to identify political prisoners in Nazi German concentration camps.'>Red triangle</Choice>
+    <Choice explanation='The black triangle was used to identify asocial prisoners in Nazi German concentration camps.'>Black triangle</Choice>
+    <Choice explanation='The blue triangle was used to identify emigrant prisoners in Nazi German concentration camps.'>Blue triangle</Choice>
+  </MultipleChoiceQuestion>
+
+  <MultipleChoiceQuestion text='[Bonus] Do you promise that you will love and take good care of yourself?'>
+    {/* cspell:disable-next-line */}
+    <Choice isCorrect explanation='Yay~ Have a nice dayyyyyy! ( > ω < )'>Yes</Choice>
+    <Choice isCorrect explanation='Great! Remember not to be too strict with yourself! ( • ω • )'>Yes</Choice>
+    <Choice isCorrect explanation={'That\'s right! You too, deserve to be loved. ( ^ ω ^ )'}>Yes</Choice>
+    <Choice isCorrect explanation={'Excellent! Have you been drinking enough water by the way? ( - ω - )'}>Yes</Choice>
+  </MultipleChoiceQuestion>
+
+</MultipleChoiceQuestionSet>
+
+## References
+
+<details>
+  <summary>Show references:</summary>
+  - [The History of Pride Month](https://nceed.morgan.edu/the-history-of-pride)
+  - [Senate hearing set for gay judicial nominee](https://www.washingtonblade.com/2011/03/13/senate-hearing-set-for-gay-judicial-nominee)
+  - [The Honorable Deborah A. Batts: Profile in Courage](https://archive.ph/20110727113045/http://www.nbjcoalition.org/news/the-honorable-deborah-a.html)
+  - [Revisiting Casa Susanna, the legendary Trans refuge in pre-Stonewall America](https://www.huckmag.com/article/revisiting-casa-susanna-the-legendary-trans-refuge-in-pre-stonewall-america)
+  - [We Are Everywhere | Penguin Random House](https://www.penguinrandomhouse.com/books/570409/we-are-everywhere-by-matthew-riemer-and-leighton-brown)
+  - [The Stonewall Reader | Penguin Random House](https://www.penguinrandomhouse.com/books/576364/the-stonewall-reader-by-edited-by-the-new-york-public-library-foreword-by-edmund-white-edited-with-an-introduction-by-jason-baumann)
+  - [Beyond the Rainbow Foundation](https://rainbowfoundation.co.kr/pages/english)
+  - [Justice for Sisters](https://justiceforsisters.org)
+  - [ILGA World](https://ilga.org)
+  - [QLife](https://qlife.org.au)
+  - [Taiwan’s high court paves the way for same-sex marriage, a first in Asia](https://www.latimes.com/world/la-fg-taiwan-same-sex-marriage-20170524-story.html)
+  - [Same-sex marriage in Asia: Understanding intra-regional differences in development](https://onlinelibrary.wiley.com/doi/10.1111/jftr.12628)
+  - [The Long Road to Lasting Marriage Equality in Nepal](https://www.apcom.org/long-road-lasting-marriage-equality-nepal)
+  - [BOOKS OF THE TIMES; Radical Change and Enduring Love - The New York Times](https://www.nytimes.com/2000/02/14/books/books-of-the-times-radical-change-and-enduring-love.html)
+  - [Original 1978 rainbow flag designed by Gilbert Baker acquired by San Francisco's GLBT Historical Society](https://www.theartnewspaper.com/2021/06/17/original-1978-rainbow-flag-designed-by-gilbert-baker-acquired-by-san-franciscos-glbt-historical-society)
+  - [Progress Pride flag gets 2021 redesign to better represent intersex people](https://www.thepinknews.com/2021/06/07/progress-pride-flag-intersex-flag)
+  - [Lia Nania](https://www.liznania.com/early-work)
+  - [Nazi concentration camp badge](https://en.wikipedia.org/wiki/Nazi_concentration_camp_badge)
+</details>

@@ -1,5 +1,4 @@
 import { useWindowSize } from '@docusaurus/theme-common'
-import { CustomToast } from '@site/src/utils/toast'
 import ClipboardJS from 'clipboard'
 import clsx from 'clsx'
 import {
@@ -29,6 +28,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton
 } from 'react-share'
+import { toast } from 'react-toastify'
 import styles from './index.module.css'
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
@@ -214,7 +214,7 @@ function NativeShareButton({ url }: NativeShareButtonProps): ReactNode {
       if (error instanceof DOMException && error.name === 'AbortError') {
         // User likely to have aborted it manually
       } else {
-        CustomToast.error('Unable to show sharing options')
+        toast.error('Unable to show sharing options')
         console.error(error)
       }
     }

@@ -1,5 +1,4 @@
 import { isEmptyObject } from '@site/src/utils/is-empty-object'
-import { CustomToast } from '@site/src/utils/toast'
 import { produce } from 'immer'
 import {
   Children,
@@ -9,10 +8,12 @@ import {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react'
 import { MdCheck as CorrectIcon, MdClose as WrongIcon } from 'react-icons/md'
+import { toast } from 'react-toastify'
 import styles from './index.module.css'
 
 // Note: In the future, if…
@@ -72,7 +73,8 @@ export function MultipleChoiceQuestionSet({
   const storageKey = persistenceKey ? (STORAGE_KEY_PREFIX + persistenceKey) : undefined
 
   const [scoreMap, setScoreMap] = useState(() => new ScoreMap())
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>(() => {
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({})
+  useEffect(() => {
     if (storageKey) {
       const rawPersistedAnswers = localStorage.getItem(storageKey)
       if (rawPersistedAnswers) {
@@ -81,18 +83,18 @@ export function MultipleChoiceQuestionSet({
           if (persistedRevision === revision) {
             // If revision numbers don't match, persisted data will remain in the localStorage
             // unless new answers have been chosen. This is just in case of bug.
-            return data
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setSelectedAnswers(data)
           } else {
-            CustomToast.info('Previous answers are not restored because some questions have been revised.')
+            toast.info('Previous answers are not restored because some questions have been revised.')
           }
         } catch (error) {
-          CustomToast.error('Unable to restore previously saved answers')
+          toast.error('Unable to restore previously saved answers')
           console.error(error)
         }
       }
     }
-    return {}
-  })
+  }, [revision, storageKey])
 
   const onSelectAnswer = useCallback((
     questionId: string,
