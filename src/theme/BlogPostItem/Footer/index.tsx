@@ -53,6 +53,7 @@ export default function BlogPostItemFooter(): ReactNode {
           </div>
         )}
         <ShareButtonsForFooter
+          title={title}
           shareUrl={shareUrl}
           shareItemType={frontMatter.custom_share_type as string | undefined}
         />
@@ -77,6 +78,7 @@ export default function BlogPostItemFooter(): ReactNode {
         <div className={clsx('col', {'col--9': truncatedPost})}>
           {tagsExists && <TagsListInline tags={tags} />}
           <ShareButtonsForFooter
+            title={title}
             shareUrl={shareUrl}
             shareItemType={frontMatter.custom_share_type as string | undefined}
           />

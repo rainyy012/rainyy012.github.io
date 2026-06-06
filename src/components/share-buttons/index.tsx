@@ -9,6 +9,7 @@ import {
   SVGProps,
   useCallback,
   useEffect,
+  useMemo,
   useReducer,
   useState,
 } from 'react'
@@ -47,10 +48,12 @@ const SHARED_ICON_PROPS: Partial<IconProps> = {
 }
 
 export interface ShareButtonsProps extends Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'children'> {
+  title?: string
   shareUrl: string
 }
 
 export function ShareButtons({
+  title,
   shareUrl,
   className,
   ...props
@@ -59,63 +62,64 @@ export function ShareButtons({
     <div className={clsx(styles.container, className)} {...props}>
 
       <BlueskyShareButton
-        url={shareUrl}
         aria-label='Share on Bluesky'
-      // title={title}
+        title={title}
+        url={shareUrl}
       >
         <BlueskyIcon {...SHARED_ICON_PROPS} />
       </BlueskyShareButton>
 
       <FacebookShareButton
-        url={shareUrl}
         aria-label='Share on Facebook'
+        title={title}
+        url={shareUrl}
       >
         <FacebookIcon {...SHARED_ICON_PROPS} />
       </FacebookShareButton>
 
       <ThreadsShareButton
-        url={shareUrl}
         aria-label='Share on Threads'
-      // title={title}
+        title={title}
+        url={shareUrl}
       >
         <ThreadsIcon {...SHARED_ICON_PROPS} />
       </ThreadsShareButton>
 
       <RedditShareButton
-        url={shareUrl}
         aria-label='Share on Reddit'
-      // title={title}
+        title={title}
+        url={shareUrl}
       >
         <RedditIcon {...SHARED_ICON_PROPS} />
       </RedditShareButton>
 
       <TelegramShareButton
-        url={shareUrl}
         aria-label='Share on Telegram'
-      // title={title}
+        title={title}
+        url={shareUrl}
       >
         <TelegramIcon {...SHARED_ICON_PROPS} />
       </TelegramShareButton>
 
       <LineShareButton
-        url={shareUrl}
         aria-label='Share on Line'
-      // title={title}
+        title={title}
+        url={shareUrl}
       >
         <LineIcon {...SHARED_ICON_PROPS} />
       </LineShareButton>
 
       <WhatsappShareButton
-        url={shareUrl}
         aria-label='Share on WhatsApp'
-      // title={title}
+        title={title}
+        url={shareUrl}
       >
         <WhatsappIcon {...SHARED_ICON_PROPS} />
       </WhatsappShareButton>
 
       <CopyButton url={shareUrl} />
 
-      <NativeShareButton url={shareUrl} />
+      <NativeShareButton title={title} url={shareUrl} />
 
     </div>
   )
@@ -131,11 +135,11 @@ export interface ShareButtonsForFooterProps extends ShareButtonsProps {
 }
 
 export function ShareButtonsForFooter({
+  title,
   shareUrl,
   shareItemType,
 }: ShareButtonsForFooterProps): ReactNode {
   const windowsize = useWindowSize()
-  // const title = 'Read this next'
   shareItemType ||= 'article'
   if (!VALID_SHARE_ITEM_TYPES.has(shareItemType)) {
     throw new Error(`Expected \`shareItemType\` to be one of ["${[...VALID_SHARE_ITEM_TYPES].join('", "')}"] but got "${shareItemType}"`)
@@ -146,7 +150,7 @@ export function ShareButtonsForFooter({
       data-is-mobile={windowsize === 'mobile'}
     >
       <b>Share this {shareItemType}:</b>
-      <ShareButtons shareUrl={shareUrl} />
+      <ShareButtons title={title} shareUrl={shareUrl} />
     </div>
   )
 }
@@ -195,21 +199,27 @@ function CopyButton({ url }: CopyButtonProps): ReactNode {
 }
 
 interface NativeShareButtonProps {
+  title?: string
   url: string
 }
 
-function NativeShareButton({ url }: NativeShareButtonProps): ReactNode {
+function NativeShareButton({
+  title,
+  url,
+}: NativeShareButtonProps): ReactNode {
+
+  const shareData = useMemo<ShareData>(() => ({ title, url }), [title, url])
 
   const [canShare, checkIfCanShare] = useReducer(() => {
     return typeof navigator !== 'undefined' &&
       typeof navigator.canShare === 'function' &&
-      navigator.canShare({ url })
+      navigator.canShare(shareData)
   }, false)
   useEffect(() => { checkIfCanShare() }, [])
 
   const onShowShareSheet = useCallback(async () => {
     try {
-      await navigator.share({ url })
+      await navigator.share(shareData)
     } catch (error) {
       if (error instanceof DOMException && error.name === 'AbortError') {
         // User likely to have aborted it manually
@@ -218,7 +228,7 @@ function NativeShareButton({ url }: NativeShareButtonProps): ReactNode {
         console.error(error)
       }
     }
-  }, [url])
+  }, [shareData])
 
   return canShare && (
     <button
