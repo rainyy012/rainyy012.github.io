@@ -1,4 +1,5 @@
 import { useWindowSize } from '@docusaurus/theme-common'
+import { CustomToast } from '@site/src/utils/toast'
 import ClipboardJS from 'clipboard'
 import clsx from 'clsx'
 import {
@@ -8,6 +9,8 @@ import {
   ReactNode,
   SVGProps,
   useCallback,
+  useEffect,
+  useReducer,
   useState,
 } from 'react'
 import {
@@ -166,24 +169,10 @@ function CopyButton({ url }: CopyButtonProps): ReactNode {
   }, [url])
   return (
     <button
-      className='react-share__ShareButton'
+      className={clsx('react-share__ShareButton', styles.customButtonBase)}
       type='button'
       onClick={onCopy}
       aria-label='Copy link'
-      style={{
-        backgroundColor: 'transparent',
-        borderColor: 'currentcolor',
-        borderImage: 'none',
-        borderRadius: '50%',
-        borderStyle: 'none',
-        borderWidth: 'medium',
-        color: 'inherit',
-        cursor: 'pointer',
-        display: 'inline-flex',
-        font: 'inherit',
-        outlineOffset: 2,
-        padding: 0,
-      }}
     >
       <svg
         viewBox='0 -960 960 960'
@@ -194,7 +183,7 @@ function CopyButton({ url }: CopyButtonProps): ReactNode {
           cx={480}
           cy={-480}
           r={480}
-          fill={isCopied ? '#6caa2b' : '#808080'}
+          fill={isCopied ? 'var(--ifm-color-success)' : 'var(--ifm-color-primary-darker)'}
         />
         <path
           d={isCopied ? COPIED_ICON : LINK_ICON}
@@ -210,12 +199,53 @@ interface NativeShareButtonProps {
 }
 
 function NativeShareButton({ url }: NativeShareButtonProps): ReactNode {
-  // TODO: navigator.share
-  return (
-    <button>
-      {'...'}
+
+  const [canShare, checkIfCanShare] = useReducer(() => {
+    return typeof navigator !== 'undefined' &&
+      typeof navigator.canShare === 'function' &&
+      navigator.canShare({ url })
+  }, false)
+  useEffect(() => { checkIfCanShare() }, [])
+
+  const onShowShareSheet = useCallback(async () => {
+    try {
+      await navigator.share({ url })
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        // User likely to have aborted it manually
+      } else {
+        CustomToast.error('Unable to show sharing options')
+        console.error(error)
+      }
+    }
+  }, [url])
+
+  return canShare && (
+    <button
+      className={clsx('react-share__ShareButton', styles.customButtonBase)}
+      type='button'
+      onClick={onShowShareSheet}
+      aria-label='More share options'
+    >
+      <svg
+        viewBox='0 -960 960 960'
+        width={ICON_SIZE}
+        height={ICON_SIZE}
+      >
+        <circle
+          cx={480}
+          cy={-480}
+          r={480}
+          fill='var(--ifm-color-primary-darker)'
+        />
+        <path
+          d={MORE_ICON}
+          fill='white'
+        />
+      </svg>
     </button>
   )
+
 }
 
 /**
@@ -227,3 +257,8 @@ const COPIED_ICON = 'm379.33-339.33 355-355q10-10 23.67-10 13.67 0 23.67 10 10 1
  * @see https://fonts.google.com/icons?selected=Material+Symbols+Rounded:link:FILL@1;wght@400;GRAD@0;opsz@40&icon.style=Rounded&icon.query=link&icon.size=32&icon.color=%23ffffff
  */
 const LINK_ICON = 'M280-280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h133.33q14.17 0 23.75 9.62 9.59 9.61 9.59 23.83 0 14.22-9.59 23.72-9.58 9.5-23.75 9.5H280q-55.56 0-94.44 38.84-38.89 38.84-38.89 94.33 0 55.49 38.89 94.49 38.88 39 94.44 39h133.33q14.17 0 23.75 9.62 9.59 9.62 9.59 23.83 0 14.22-9.59 23.72-9.58 9.5-23.75 9.5H280Zm76.67-166.67q-14.17 0-23.75-9.61-9.59-9.62-9.59-23.84 0-14.21 9.59-23.71 9.58-9.5 23.75-9.5h246.66q14.17 0 23.75 9.61 9.59 9.62 9.59 23.84 0 14.21-9.59 23.71-9.58 9.5-23.75 9.5H356.67Zm190 166.67q-14.17 0-23.75-9.62-9.59-9.61-9.59-23.83 0-14.22 9.59-23.72 9.58-9.5 23.75-9.5H680q55.56 0 94.44-38.84 38.89-38.84 38.89-94.33 0-55.49-38.89-94.49-38.88-39-94.44-39H546.67q-14.17 0-23.75-9.62-9.59-9.62-9.59-23.83 0-14.22 9.59-23.72 9.58-9.5 23.75-9.5H680q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H546.67Z'
+
+/**
+ * @see https://fonts.google.com/icons?selected=Material+Symbols+Rounded:more_horiz:FILL@1;wght@400;GRAD@0;opsz@40&icon.style=Rounded&icon.query=more&icon.size=32&icon.color=%23ffffff
+ */
+const MORE_ICON = 'M218.57-421.33q-24.24 0-41.4-17.26Q160-455.86 160-480.09q0-24.24 17.26-41.41 17.26-17.17 41.5-17.17t41.41 17.26q17.16 17.27 17.16 41.5 0 24.24-17.26 41.41-17.26 17.17-41.5 17.17Zm261.34 0q-24.24 0-41.41-17.26-17.17-17.27-17.17-41.5 0-24.24 17.26-41.41 17.27-17.17 41.5-17.17 24.24 0 41.41 17.26 17.17 17.27 17.17 41.5 0 24.24-17.26 41.41-17.27 17.17-41.5 17.17Zm261.33 0q-24.24 0-41.41-17.26-17.16-17.27-17.16-41.5 0-24.24 17.26-41.41 17.26-17.17 41.5-17.17t41.4 17.26Q800-504.14 800-479.91q0 24.24-17.26 41.41-17.26 17.17-41.5 17.17Z'

@@ -19,6 +19,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# HTTPS certificates
+localhost.pem
+localhost-key.pem
+
 # Special
 *.draft*
 *.old*

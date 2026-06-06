@@ -20,3 +20,17 @@
   margin-block-start: 0.5em;
   margin-block-end: 1em;
 }
+
+.customButtonBase {
+  background-color: transparent;
+  border-color: currentcolor;
+  border-image: none;
+  border-style: none;
+  border-width: medium;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  outline-offset: 2px;
+  padding: 0;
+}
