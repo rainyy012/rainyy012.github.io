@@ -31,6 +31,16 @@ This command generates static content into the `build` directory and can be serv
 pnpm run serve
 ```
 
+## HTTPS
+
+To enable the HTTPS "green padlock" while testing in development, you can use `mkcert` to generate the certificates.
+
+Reference: https://docusaurus.io/docs/cli#enabling-https
+
+Known issue: This doesn't seem to work when serving the production build through `pnpm run serve`.
+
+Reference: https://docusaurus.io/docs/next/cli#enabling-https
+
 ## Contribution Guide
 
 Please clone or fork from the `dev` branch.
