@@ -15,7 +15,7 @@ import {
 import { MdCheck as CorrectIcon, MdClose as WrongIcon } from 'react-icons/md'
 import styles from './index.module.css'
 
-// NOTE: In the future, if…
+// Note: In the future, if…
 // - a `randomizeQuestions` feature is implemented, `questionId` prop must be supplied
 // - a `randomizeChoices` feature is implemented, `answerId` prop must be supplied
 

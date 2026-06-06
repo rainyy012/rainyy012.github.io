@@ -6,7 +6,18 @@ tags: [memes, vent]
 image: /banners/2026-05-31-why-is-it-scary.webp
 ---
 
-I have came across quite [a few posts on Reddit](#reddit-references) where the posters expressed their worries that are either about starting HRT, the changes from HRT, coming out, or being found out.
+import { PreviewOnly, FullPageOnly } from '@site/src/components/composing'
+import Link from '@docusaurus/Link'
+import { useBlogPost } from '@docusaurus/plugin-content-blog/lib/client/contexts.js'
+
+{/* Note: hashtag links break in list view */}
+{/* https://github.com/facebook/docusaurus/issues/9731 */}
+<PreviewOnly>
+  I have came across quite <Link to={`${useBlogPost().metadata.permalink}#reddit-references`}>a few posts on Reddit</Link> where the posters expressed their worries that are either about starting HRT, the changes from HRT, coming out, or being found out.
+</PreviewOnly>
+<FullPageOnly>
+  I have came across quite [a few posts on Reddit](#reddit-references) where the posters expressed their worries that are either about starting HRT, the changes from HRT, coming out, or being found out.
+</FullPageOnly>
 
 For quite some time, I have been wondering too, just _**why**_? I have also felt the same fear and anxiety in the beginning, and even every now and then, a small trace of that fear and anxiety still haunts me.
 

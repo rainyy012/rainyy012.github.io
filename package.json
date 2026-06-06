@@ -16,12 +16,12 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "spellcheck": "cspell lint . -c ./.vscode/cspell.json",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "inspect": "pnpm run spellcheck && pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",
     "@docusaurus/faster": "3.10.1",
-    "@docusaurus/plugin-client-redirects": "^3.10.1",
     "@docusaurus/plugin-content-blog": "^3.10.1",
     "@docusaurus/plugin-content-docs": "^3.10.1",
     "@docusaurus/preset-classic": "3.10.1",
