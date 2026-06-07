@@ -1,8 +1,10 @@
-# https://rainyy012.github.io
+# ~~`https://rainyy012.github.io`~~
 
-[![CodeQL Advanced](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/codeql.yml/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/codeql.yml)<br />
+This repository was migrated from GitHub and setup is still in progress.
+
+<!-- [![CodeQL Advanced](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/codeql.yml/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/codeql.yml)<br />
 [![GitHub Pages](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/gh-pages.yml)<br />
-[![Pages Build Deployment](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/pages/pages-build-deployment)<br />
+[![Pages Build Deployment](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/rainyy012/rainyy012.github.io/actions/workflows/pages/pages-build-deployment)<br /> -->
 
 ## Installation
 
