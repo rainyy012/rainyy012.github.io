@@ -8,6 +8,8 @@ import { themes as prismThemes } from 'prism-react-renderer'
 
 const ENV_LOCAL = '.env.local'
 
+const EDIT_URL = 'https://codeberg.org/rainyy012/pages/src/branch/dev'
+
 if (existsSync(ENV_LOCAL)) {
   dotEnvConfig({ path: ENV_LOCAL })
 }
@@ -62,7 +64,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/rainyy012/rainyy012.github.io/tree/dev',
+          editUrl: EDIT_URL,
         },
         blog: {
           // routeBasePath: '/',
@@ -72,7 +74,7 @@ const config: Config = {
             xslt: true,
           },
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/rainyy012/rainyy012.github.io/tree/dev',
+          editUrl: EDIT_URL,
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',

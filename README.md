@@ -1,6 +1,3 @@
-# https://rainyy012.codeberg.page
-(formerly `https://rainyy012.github.io`)
-
 ## Installation
 
 ```bash
