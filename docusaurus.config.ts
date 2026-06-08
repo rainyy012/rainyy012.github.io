@@ -50,7 +50,9 @@ const config: Config = {
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     SITE_URL: process.env.SITE_URL,
     ETH_DONATION_ADDRESS: process.env.ETH_DONATION_ADDRESS,
-    BTC_DONATION_ADDRESSES: String(process.env.BTC_DONATION_ADDRESSES).split('\n'),
+    BTC_DONATION_ADDRESSES: String(
+      process.env.BTC_DONATION_ADDRESSES || ''
+    ).split('\n').filter(Boolean),
   },
 
   presets: [

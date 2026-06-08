@@ -9,7 +9,7 @@ jobs:
     runs-on: codeberg-tiny-lazy
     env:
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
-      GIT_HASH: ${{ vars.FORGEJO_SHA }}
+      GIT_HASH: ${{ forge.sha }}
       GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
       SITE_URL: "https://${{ forge.repository_owner }}.codeberg.page"
     steps:

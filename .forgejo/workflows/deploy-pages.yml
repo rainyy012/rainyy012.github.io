@@ -11,11 +11,11 @@ jobs:
     runs-on: codeberg-small
     env: # https://forgejo.org/docs/v11.0/user/actions/reference/#secrets
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
-      GIT_HASH: ${{ vars.FORGEJO_SHA }}
+      GIT_HASH: ${{ forge.sha }}
       GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
       SITE_URL: "https://${{ forge.repository_owner }}.codeberg.page"
-      DONATION_ADDRESS_ETH: ${{ vars.DONATION_ADDRESS_ETH }}
-      DONATE_BTC_ADDRESSES: ${{ secrets.DONATE_BTC_ADDRESSES }}
+      ETH_DONATION_ADDRESS: ${{ vars.ETH_DONATION_ADDRESS }}
+      BTC_DONATION_ADDRESSES: ${{ secrets.BTC_DONATION_ADDRESSES }}
     steps:
       - name: Checkout repository
         uses: https://data.forgejo.org/actions/checkout@v6
