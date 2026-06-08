@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: docker
+    runs-on: codeberg-tiny
     env: # https://forgejo.org/docs/v11.0/user/actions/reference/#secrets
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
       GIT_HASH: ${{ vars.FORGEJO_SHA }}
