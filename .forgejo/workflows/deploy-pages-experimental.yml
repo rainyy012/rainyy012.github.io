@@ -1,4 +1,4 @@
-name: Publish Page (manually)
+name: Publish Page (experimental)
 
 on:
   # push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: codeberg-small
+    runs-on: linux-shell
     env: # https://forgejo.org/docs/v11.0/user/actions/reference/#secrets
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
       GIT_HASH: ${{ forge.sha }}
@@ -19,14 +19,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: https://data.forgejo.org/actions/checkout@v6
-      - name: Setup Node.js
-        uses: https://data.forgejo.org/actions/setup-node@v6
-        with:
-          node-version: '24.x'
-      - name: Enable Corepack and Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
+      # - name: Setup Node.js
+      #   uses: https://data.forgejo.org/actions/setup-node@v6
+      #   with:
+      #     node-version: '24.x'
+      # - name: Enable Corepack and Setup pnpm
+      #   run: |
+      #     corepack enable
+      #     corepack prepare pnpm@latest --activate
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
