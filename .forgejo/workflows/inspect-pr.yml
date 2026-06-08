@@ -6,7 +6,7 @@ on:
 
 jobs:
   inspect-pr:
-    runs-on: codeberg-tiny-lazy
+    runs-on: custom-docker # codeberg-tiny-lazy
     env: # https://forgejo.org/docs/v11.0/user/actions/reference/#secrets
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
       GIT_HASH: ${{ forge.sha }}
