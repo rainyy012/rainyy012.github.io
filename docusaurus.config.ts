@@ -23,7 +23,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: process.env.RAIN_GITHUB_IO,
+  url: process.env.SITE_URL,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -46,11 +46,11 @@ const config: Config = {
 
   customFields: {
     DISCORD_LINK: process.env.DISCORD_LINK,
-    GITHUB_SHA: process.env.GITHUB_SHA,
+    GIT_HASH: process.env.GIT_HASH,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
-    RAIN_GITHUB_IO: process.env.RAIN_GITHUB_IO,
-    DONATE_ETH_ADDRESS: process.env.DONATE_ETH_ADDRESS,
-    DONATE_BTC_ADDRESSES: String(process.env.DONATE_BTC_ADDRESSES).split('\n'),
+    SITE_URL: process.env.SITE_URL,
+    ETH_DONATION_ADDRESS: process.env.ETH_DONATION_ADDRESS,
+    BTC_DONATION_ADDRESSES: String(process.env.BTC_DONATION_ADDRESSES).split('\n'),
   },
 
   presets: [
@@ -172,8 +172,8 @@ const config: Config = {
           title: 'External Links',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/rainyy012/rainyy012.github.io',
+              label: 'Source Code',
+              href: 'https://codeberg.org/rainyy012/pages',
             },
             // {
             //   label: 'Discord',

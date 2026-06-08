@@ -4,7 +4,7 @@ import { CUSTOM_VALUES } from '@site/src/constants';
 
 export default function FooterCopyright({copyright}: Props): ReactNode {
   useEffect(() => {
-    const comment = document.createComment(` Build hash: ${CUSTOM_VALUES.GITHUB_SHA} `)
+    const comment = document.createComment(` Build hash: ${CUSTOM_VALUES.GIT_HASH} `)
     document.append(comment)
     return () => { comment.remove() }
   }, [])

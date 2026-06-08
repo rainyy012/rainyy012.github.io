@@ -1,7 +1,4 @@
-import BrowserOnly from '@docusaurus/BrowserOnly'
-import CodeBlock from '@theme/CodeBlock'
-import QRCode from 'react-qr-code'
-import { BTC_ADDRESS, ETH_ADDRESS } from './_addresses'
+import { TippingForm } from './_form'
 
 # Support This Site
 
@@ -11,68 +8,4 @@ If you decided to leave a tip, feel free to use one of the options below. It mea
 
 <br />
 
-## Patreon
-
-{/* [![Become a Patron](https://img.shields.io/badge/-Become_a_Patron-f96854?logo=Patreon&style=for-the-badge)](https://www.patreon.com/join/rainyy012) */}
-[![Become a Patron](/img/patron-button.svg)](https://www.patreon.com/join/rainyy012)
-
-<br />
-
-## Ko-fi
-
-{/* [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C2A420F31Y) */}
-[![ko-fi](/img/kofi-button.svg)](https://ko-fi.com/C2A420F31Y)
-
-<br />
-
-## Cryptocurrency
-
-<br />
-
-### BTC
-
-<details>
-  <summary>Show address:</summary>
-  <BrowserOnly>
-    {() => (
-      <>
-        <CodeBlock language='plaintext'>
-          {BTC_ADDRESS}
-        </CodeBlock>
-        {BTC_ADDRESS && (
-          <QRCode
-            size={200}
-            value={BTC_ADDRESS}
-            style={{ backgroundColor: '#ffffff', padding: 20 }}
-          />
-        )}
-      </>
-    )}
-  </BrowserOnly>
-</details>
-
-<br />
-
-### ETH
-
-<details>
-  <summary>Show address:</summary>
-  <BrowserOnly>
-    {() => (
-      <>
-        <CodeBlock language='plaintext'>
-          {ETH_ADDRESS}
-        </CodeBlock>
-        {ETH_ADDRESS && (
-          <QRCode
-            size={200}
-            value={ETH_ADDRESS}
-            style={{ backgroundColor: '#ffffff', padding: 20 }}
-          />
-        )}
-      </>
-    )}
-  </BrowserOnly>
-</details>
-
-<br />
+<TippingForm />

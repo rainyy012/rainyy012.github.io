@@ -1,5 +1,6 @@
 {
   "ignorePaths": [
+    "**/*.svg",
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml"
   ],
@@ -16,16 +17,19 @@
     "bicalutamide",
     "botan",
     "bsky",
+    "codeberg",
     "cypionate",
     "deadname",
     "enanthate",
     "enby",
     "evenodd",
+    "forgejo",
     "gaht",
     "genderblind",
     "glbt",
     "ilga",
     "kamiina",
+    "kofi",
     "lgbtiq",
     "lgbtq",
     "lgbtqia",
@@ -59,6 +63,7 @@
     "valerate",
     "vecchietti",
     "verdana",
+    "webp",
     "wordnik",
     "xlink"
   ]

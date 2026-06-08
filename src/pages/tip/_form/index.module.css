@@ -1,0 +1,121 @@
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: max-content;
+}
+
+.optionList {
+  display: grid;
+  gap: 0.5rem;
+  justify-self: start;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 240px;
+}
+
+.optionList > li {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.optionList > li > label {
+  background-color: transparent;
+  border: solid 2px #80808080;
+  border-radius: 10px;
+  cursor: pointer;
+  display: grid;
+  gap: 0.25rem;
+  grid-auto-rows: min-content;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem 0.5rem;
+  place-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.optionList > li > label::after {
+  background-color: transparent;
+  content: " ";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.optionList > li > label:hover::after {
+  background-color: #80808020;
+}
+
+.optionList > li > label:active::after {
+  background-color: #80808040;
+}
+
+.optionList > li > label > span {
+  text-align: center;
+}
+
+.optionList > li input {
+  display: none;
+}
+
+.optionList > li > label:has(input:checked) {
+  border-color: var(--ifm-color-primary);
+}
+
+.optionList > li > label:has(input:checked)::before {
+  background-color: var(--ifm-color-primary);
+  content: " ";
+  height: 100%;
+  opacity: 0.2;
+  position: absolute;
+  width: 100%;
+}
+
+.methodDisplayContainer {
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+  grid-auto-rows: max-content;
+  min-height: 400px;
+  padding: 1rem;
+  justify-items: center;
+  width: 100%;
+}
+
+.methodDisplayContainer[data-type="simple-button"] {
+  padding-top: 5em;
+}
+
+.buttonHeightStabilizer {
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+}
+
+.buttonImg {
+  transform: scale(1.35);
+}
+
+.buttonHint {
+  font-size: 12pt;
+  opacity: 0.65;
+}
+
+.kofiIframe {
+  border: none;
+  overflow: auto;
+  width: 100%;
+}
+
+.qr {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.codeBlock {
+  padding-inline: 1rem;
+}

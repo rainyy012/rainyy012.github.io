@@ -1,0 +1,37 @@
+name: "Inspect PR"
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  inspect-pr:
+    runs-on: docker
+    env:
+      DISCORD_LINK: ${{ vars.DISCORD_LINK }}
+      GIT_HASH: ${{ vars.FORGEJO_SHA }}
+      GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
+      SITE_URL: "https://${{ forge.repository_owner }}.codeberg.page"
+    steps:
+      - name: Checkout repository
+        uses: https://data.forgejo.org/actions/checkout@v6
+      - name: Setup Node.js
+        uses: https://data.forgejo.org/actions/setup-node@v6
+        with:
+          node-version: '24.x'
+      - name: Enable Corepack and Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Spell checking
+        run: pnpm run spellcheck
+      - name: Type checking
+        run: pnpm run typecheck
+      - name: Code linting
+        run: pnpm run lint
+      - name: Tests
+        run: pnpm run test
+      - name: Try build
+        run: pnpm run build
