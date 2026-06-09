@@ -1,9 +1,6 @@
 name: Publish Page (experimental)
 
 on:
-  # push:
-  #   branches:
-  #     - main
   workflow_dispatch:
 
 jobs:
@@ -19,18 +16,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: https://data.forgejo.org/actions/checkout@v6
-      # - name: Setup Node.js
-      #   uses: https://data.forgejo.org/actions/setup-node@v6
-      #   with:
-      #     node-version: '24.x'
-      # - name: Enable Corepack and Setup pnpm
-      #   run: |
-      #     corepack enable
-      #     corepack prepare pnpm@latest --activate
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm run build
+      - name: Build checkpoint
+        run: ls
       - name: Deploy page
         uses: https://codeberg.org/git-pages/action@v2
         with:
