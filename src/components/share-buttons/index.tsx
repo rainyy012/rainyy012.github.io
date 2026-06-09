@@ -138,6 +138,7 @@ export function ShareButtonsForFooter({
   title,
   shareUrl,
   shareItemType,
+  ...otherProps
 }: ShareButtonsForFooterProps): ReactNode {
   const windowsize = useWindowSize()
   shareItemType ||= 'article'
@@ -150,7 +151,7 @@ export function ShareButtonsForFooter({
       data-is-mobile={windowsize === 'mobile'}
     >
       <b>Share this {shareItemType}:</b>
-      <ShareButtons title={title} shareUrl={shareUrl} />
+      <ShareButtons title={title} shareUrl={shareUrl} {...otherProps} />
     </div>
   )
 }

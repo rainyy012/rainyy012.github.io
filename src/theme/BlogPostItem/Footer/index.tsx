@@ -87,7 +87,9 @@ export default function BlogPostItemFooter(): ReactNode {
           <div
             className={clsx('col text--right', {
               'col--3': tagsExists,
-            })}>
+            })}
+            style={{ marginTop: '1rem' }}
+          >
             <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
           </div>
         )}
