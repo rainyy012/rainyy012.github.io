@@ -12,4 +12,8 @@
     "prefix": "//c",
     "body": "// cspell:disable-next-line",
   },
+  "Custom Blog Image": {
+    "prefix": "<CustomBlogImage",
+    "body": "<CustomBlogImage src={require('./_assets/banner.webp')} />",
+  },
 }

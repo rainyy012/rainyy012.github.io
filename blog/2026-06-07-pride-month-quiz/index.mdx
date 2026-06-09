@@ -3,16 +3,19 @@ slug: pride-month-quiz
 title: Pride Month Quiz
 authors: [rain]
 tags: [knowledge, quiz]
-image: /banners/2026-06-07-prize-month-quiz.webp
+image: ./_assets/banner.webp
 custom_show_edit_link: true
 custom_share_type: quiz
 ---
 
+import { CustomBlogImage } from '@site/src/components/custom-blog-image'
 import {
   Choice,
   MultipleChoiceQuestion,
   MultipleChoiceQuestionSet,
 } from '@site/src/components/quiz/multiple-choice'
+
+<CustomBlogImage src={require('./_assets/banner.webp')} />
 
 Here are 10 questions to test your knowledge about pride month and the queer space in general.
 This includes questions about the community, history, media, etc.
