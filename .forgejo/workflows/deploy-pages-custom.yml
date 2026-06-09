@@ -1,14 +1,14 @@
-name: Publish Page (manually)
+name: Deploy Pages (custom)
 
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: custom-runner
+    runs-on: custom
     env: # https://forgejo.org/docs/v11.0/user/actions/reference/#secrets
       DISCORD_LINK: ${{ vars.DISCORD_LINK }}
       GIT_HASH: ${{ forge.sha }}
