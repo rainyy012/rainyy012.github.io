@@ -4,6 +4,7 @@
   "license": "GPL-3.0-only",
   "private": true,
   "scripts": {
+    "c": "node ./scripts/create-blog-post.ts",
     "docusaurus": "docusaurus",
     "start": "cross-env HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem docusaurus start --no-open",
     "lint": "eslint .",
@@ -76,6 +77,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=24.0"
   }
 }
