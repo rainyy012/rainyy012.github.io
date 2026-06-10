@@ -1,6 +1,6 @@
 name: Ping
 
-# This is a manually triggered workflow to check if the custom runner is online
+# A manually triggered workflow to check if the runner is reachable.
 
 on:
   workflow_dispatch:
