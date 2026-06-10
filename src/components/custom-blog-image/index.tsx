@@ -29,19 +29,13 @@ export function CustomBlogImageProvider({
 }
 
 export interface CustomBlogImageProps {
-  src: string | ReturnType<typeof require>
+  src: ReturnType<typeof require>
 }
 
 export function CustomBlogImage({ src }: CustomBlogImageProps): void {
   const [, setCustomBlogImage] = useContext(CustomBlogImageContext)!
   useEffect(() => {
-    if (src) {
-      if (typeof src.default === 'string') {
-        setCustomBlogImage(src.default)
-      } else if (typeof src === 'string') {
-        setCustomBlogImage(src)
-      }
-    }
+    setCustomBlogImage(src.default)
   }, [setCustomBlogImage, src])
 }
 

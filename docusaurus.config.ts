@@ -8,6 +8,8 @@ import { themes as prismThemes } from 'prism-react-renderer'
 
 const ENV_LOCAL = '.env.local'
 
+const THROW_IF_PRODUCTION = process.env.NODE_ENV === 'production' ? 'throw' : 'warn'
+
 const EDIT_URL = 'https://codeberg.org/rainyy012/pages/src/branch/dev'
 
 if (existsSync(ENV_LOCAL)) {
@@ -76,9 +78,9 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl: EDIT_URL,
           // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onInlineTags: THROW_IF_PRODUCTION,
+          onInlineAuthors: 'throw',
+          onUntruncatedBlogPosts: THROW_IF_PRODUCTION,
         },
         theme: {
           customCss: './src/css/custom.css',
