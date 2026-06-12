@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, writeFileSync } from 'fs'
 import path from 'path'
 
-const [, , slug] = process.argv
+const [, , slug, ...options] = process.argv
 
 if (!slug) {
   console.log('\n × Missing parameter `slug`\n')
@@ -17,11 +17,11 @@ const blogEntryPath = path.join(
   process.cwd(),
   'blog',
   now.getFullYear().toString(),
-  [
+  options.includes('--today') ? [
     (now.getMonth() + 1).toString().padStart(2, '0'),
     (now.getDate()).toString().padStart(2, '0'),
     slug,
-  ].join('-'),
+  ].join('-') : slug,
 ) + '.draft'
 
 if (existsSync(blogEntryPath)) {
@@ -40,6 +40,8 @@ writeFileSync(
     '---',
     `slug: ${slug}`,
     `title: ${title}`,
+    // Keep title and slug close to each other.
+    // In case changes are necessary, both can get updated together.
     'authors: [rain]',
     'tags: []',
     'image: ./_assets/banner.webp',

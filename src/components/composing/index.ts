@@ -1,4 +1,5 @@
 export * from './blog'
+export * from './hidden-marker'
 export * from './sarcasm'
 export * from './signature'
 export * from './spoiler'

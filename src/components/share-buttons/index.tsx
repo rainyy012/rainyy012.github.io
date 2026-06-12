@@ -167,6 +167,7 @@ function CopyButton({ url }: CopyButtonProps): ReactNode {
       ClipboardJS.copy(url)
       setCopiedState(true)
       setTimeout(() => { setCopiedState(false) }, 3000)
+      toast.success('Link copied')
     } catch (error) {
       console.error(error)
       window.alert('Unable to copy link')

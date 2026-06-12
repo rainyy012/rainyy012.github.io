@@ -9,7 +9,7 @@ import MDXPre from '@theme/MDXComponents/Pre'
 import MDXUl from '@theme/MDXComponents/Ul'
 import { MDXComponents } from 'mdx/types'
 import { ComponentProps, ComponentType, lazy, ReactNode, Suspense, useMemo } from 'react'
-import * as runtime from 'react/jsx-runtime'
+import * as jsxRuntime from 'react/jsx-runtime'
 import { Spoiler, YTEmbed } from '../composing'
 
 export interface MarkdownWrapperProps {
@@ -20,7 +20,7 @@ export function MarkdownWrapper({
   children,
 }: MarkdownWrapperProps): ReactNode {
   const CompiledContent = useMemo(() => {
-    return lazy(async () => evaluate(children, runtime))
+    return lazy(async () => evaluate(children, jsxRuntime))
   }, [children])
   return (
     <Suspense>

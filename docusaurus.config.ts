@@ -165,6 +165,10 @@ const config: Config = {
           title: 'More',
           items: [
             {
+              label: 'Settings',
+              to: '/settings',
+            },
+            {
               label: 'Resource List',
               to: '/docs/resources',
             },

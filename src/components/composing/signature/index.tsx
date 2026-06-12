@@ -17,3 +17,26 @@ export function Signature({ className, style, ...props }: SignatureProps): React
     />
   )
 }
+
+export interface Signature {
+  (props: SignatureProps): ReactNode
+  WithValediction(props: SignatureWithValedictionProps): ReactNode
+}
+
+export interface SignatureWithValedictionProps extends SignatureProps {
+  replacedBy?: ReactNode
+}
+
+export function SignatureWithValediction({
+  replacedBy,
+  ...signatureProps
+}: SignatureWithValedictionProps): ReactNode {
+  return (
+    <p>
+      <br />{replacedBy || 'From the bottom of my heart,'}<br />
+      <Signature {...signatureProps} />
+    </p>
+  )
+}
+
+Signature.WithValediction = SignatureWithValediction
