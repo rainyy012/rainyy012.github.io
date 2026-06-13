@@ -173,7 +173,7 @@ Reference: https://forgejo.org/docs/latest/admin/actions/configuration/#choosing
 ```diff
   connections:
 +     forgejo:
-+       url: "https://codeberg.org/"
++       url: https://codeberg.org/
 +       uuid: "<UUID>"
 +       token: "<TOKEN>"
 ```

@@ -1,4 +1,3 @@
-import { isNullOrUndefined } from '@site/src/utils/type-check'
 import {
   ActionDispatch,
   createContext,
@@ -8,7 +7,9 @@ import {
   useReducer,
 } from 'react'
 
-export const CustomFontFamilyContext = createContext<[string | null, ActionDispatch<[string | null]>]>(null!)
+export const FONT_SYSTEM_UI = 'system-ui'
+
+export const CustomFontFamilyContext = createContext<[string, ActionDispatch<[string]>]>(null!)
 
 export interface CustomFontFamilyProviderProps {
   children?: ReactNode
@@ -24,22 +25,38 @@ export function CustomFontFamilyProvider({
   children,
 }: CustomFontFamilyProviderProps): ReactNode {
 
-  const state = useReducer((_, newValue: string | null) => {
-    if (isNullOrUndefined(newValue)) {
-      localStorage.removeItem(STORAGE_KEY)
+  const state = useReducer<string, [string | [string]]>((_, newValue: string | [string]) => {
+    if (Array.isArray(newValue)) {
+      // Prevent saving local storage upon initialization.
+      return newValue[0]
     } else {
-      localStorage.setItem(STORAGE_KEY, newValue)
+      if (newValue === FONT_SYSTEM_UI) {
+        localStorage.removeItem(STORAGE_KEY)
+      } else {
+        localStorage.setItem(STORAGE_KEY, newValue)
+      }
+      return newValue
     }
-    return newValue
-  }, null as string | null)
+  }, FONT_SYSTEM_UI)
   const [customFontFamily, setCustomFontFamily] = state
 
   useEffect(() => {
     const fetchedCustomFont = localStorage.getItem(STORAGE_KEY)
     if (fetchedCustomFont) {
-      // TOFIX: (mid priority) this should not trigger local storage calls
-      setCustomFontFamily(fetchedCustomFont)
+      setCustomFontFamily([fetchedCustomFont])
     }
+  }, [setCustomFontFamily])
+
+  useEffect(() => {
+    const onStorageEvent = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY) {
+        setCustomFontFamily([e.newValue || FONT_SYSTEM_UI])
+      } else if (Object.is(e.key, null)) {
+        setCustomFontFamily([FONT_SYSTEM_UI])
+      }
+    }
+    window.addEventListener('storage', onStorageEvent)
+    return () => { window.removeEventListener('storage', onStorageEvent) }
   }, [setCustomFontFamily])
 
   useInsertionEffect(() => {

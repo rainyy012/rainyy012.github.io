@@ -16,8 +16,6 @@ export default function FooterCopyright({copyright}: Props): ReactNode {
       // dangerouslySetInnerHTML={{__html: copyright}}
     >
       Copyright © {new Date().getFullYear()} Rain
-      {' '}
-      <span style={{ opacity: 0.65, marginInlineStart: '0.5em' }}>:3</span>
     </div>
   );
 }

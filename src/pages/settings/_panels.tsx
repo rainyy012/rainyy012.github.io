@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { CustomFontFamilyContext } from '@site/src/components/custom-font'
+import { CustomFontFamilyContext, FONT_SYSTEM_UI } from '@site/src/components/custom-font'
 import { ChangeEvent, ReactNode, useCallback, useContext } from 'react'
 import styles from './index.module.css'
 
@@ -50,7 +50,7 @@ export function ThemePanel(): ReactNode {
 // -----------------------------------------------------------------------------
 
 const FONT_FAMILIES = [
-  null,
+  FONT_SYSTEM_UI,
   'Arial',
   'Verdana',
   'Tahoma',
@@ -63,7 +63,7 @@ const FONT_FAMILIES = [
 export function FontPanel(): ReactNode {
   const [customFontFamily, setCustomFontFamily] = useContext(CustomFontFamilyContext)
   const onFontChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setCustomFontFamily(e.target.value === 'system-ui' ? null : e.target.value)
+    setCustomFontFamily(e.target.value)
   }, [setCustomFontFamily])
   return (
     <ul className={styles.list}>
@@ -74,12 +74,12 @@ export function FontPanel(): ReactNode {
               <input
                 type='radio'
                 name='font'
-                value={fontFamily || 'system-ui'}
+                value={fontFamily}
                 checked={Object.is(customFontFamily, fontFamily)}
                 onChange={onFontChange}
               />
-              <span style={fontFamily ? { fontFamily } : {}}>
-                {fontFamily || 'System default'}
+              <span style={{ fontFamily }}>
+                {fontFamily === FONT_SYSTEM_UI ? 'System default' : fontFamily}
               </span>
             </label>
           </li>
