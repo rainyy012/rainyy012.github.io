@@ -5,11 +5,18 @@
     "body": "import styles from './index.module.css'",
   },
   "CSpell Disable Line": {
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "prefix": "//c",
     "body": "// cspell:disable-line",
   },
   "CSpell Disable Next Line": {
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "prefix": "//c",
     "body": "// cspell:disable-next-line",
+  },
+  "Ellipsis": {
+    "scope": "md,mdx",
+    "prefix": "...",
+    "body": "…",
   },
 }

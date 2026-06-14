@@ -1,4 +1,11 @@
+import 'react'
 import { CustomValuesEnv } from './src/constants'
+
+declare module 'react' {
+  interface CSSProperties {
+    [key: `--${string}`]: string | number
+  }
+}
 
 declare global {
 
@@ -13,10 +20,8 @@ declare global {
 }
 
 declare module '!!raw-loader!*' {
-
   const content: string
   export default content
-
 }
 
 export { }

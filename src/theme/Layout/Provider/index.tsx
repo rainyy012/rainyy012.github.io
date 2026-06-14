@@ -1,31 +1,32 @@
 import React, {type ReactNode} from 'react';
-import Provider from '@theme-original/Layout/Provider';
-import type ProviderType from '@theme/Layout/Provider';
-import type {WrapperProps} from '@docusaurus/types';
-import {ToastContainer, Bounce} from 'react-toastify'
+import {composeProviders} from '@docusaurus/theme-common';
+import {
+  ColorModeProvider,
+  AnnouncementBarProvider,
+  ScrollControllerProvider,
+  NavbarProvider,
+  PluginHtmlClassNameProvider,
+} from '@docusaurus/theme-common/internal';
+import {DocsPreferredVersionContextProvider} from '@docusaurus/plugin-content-docs/client';
+import type {Props} from '@theme/Layout/Provider';
 import {CustomFontFamilyProvider} from '@site/src/components/custom-font';
+import {CustomToastContainer} from '@site/src/components/custom-toast-container';
 
-type Props = WrapperProps<typeof ProviderType>;
+const Provider = composeProviders([
+  ColorModeProvider,
+  CustomFontFamilyProvider,
+  AnnouncementBarProvider,
+  ScrollControllerProvider,
+  DocsPreferredVersionContextProvider,
+  PluginHtmlClassNameProvider,
+  NavbarProvider,
+]);
 
-export default function ProviderWrapper(props: Props): ReactNode {
+export default function LayoutProvider({children}: Props): ReactNode {
   return (
-    <CustomFontFamilyProvider>
-      <Provider {...props} />
-      <ToastContainer
-        position='top-center'
-        autoClose={5000}
-        hideProgressBar
-        closeOnClick
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='colored'
-        transition={Bounce}
-        toastStyle={{
-          width: 800,
-          maxWidth: '100vw',
-        }}
-      />
-    </CustomFontFamilyProvider>
+    <Provider>
+      {children}
+      <CustomToastContainer />
+    </Provider>
   );
 }

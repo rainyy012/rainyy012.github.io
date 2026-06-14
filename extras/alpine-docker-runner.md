@@ -202,5 +202,30 @@ CONTAINER ID   IMAGE                                COMMAND                  CRE
 8ab492c3d424   docker:dind                          "dockerd-entrypoint.…"   Less than a second ago   Up Less than a second   2375-2376/tcp   docker_dind
 ```
 
-## Notes
-- If the labels are not showing up, open `runner-config.yml` and check if `labels` is indented properly. It should be nested under `runner`. In case `labels` have been accidentally "de-indented", `forgejo-runner` will not throw an error and simply assumes that no label has been provided.
+## Troubleshooting
+
+### Runner is online but labels are not showing
+- Open `runner-config.yml` and check if `labels` is indented properly.
+- It should be nested under `runner`.
+- In case `labels` have been accidentally "de-indented", `forgejo-runner` will not throw an error and simply assumes that no label has been provided.
+
+### TLS handshake timeout
+
+In case of error such as:
+> error: Put "https://username.codeberg.page": net/http: TLS handshake timeout
+> ⚙️ [runner]: exit with `FAILURE`: 1
+
+It might be due to:
+- Poor network conditions, or
+- Not enough computing power (try increasing the CPU core count for the virtual machine), or
+- Docker's MTU (default=1500b) ends up being too high (try changing to 1450)
+
+Example of `/etc/docker/daemon.json` after updating:
+```json
+{
+  "log-driver": "local",
+  "mtu": 1450
+}
+```
+
+It doesn't seem like any of the solutions mentioned above actually fix the issue because the results are very flaky. For example, on one attempt after increasing CPU count, the workflow completes successfully, on second attempt, the TLS handshake timeout occurs again.

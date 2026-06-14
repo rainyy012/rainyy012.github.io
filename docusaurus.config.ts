@@ -128,14 +128,9 @@ const config: Config = {
       },
       items: [
         // {
-        //   to: '/blog',
-        //   label: 'Blog',
-        //   position: 'left',
-        // },
-        // {
-        //   href: process.env.DISCORD_LINK,
-        //   label: 'Discord',
-        //   position: 'right',
+        //   to | href: '',
+        //   label: '',
+        //   position: 'left' | 'right',
         // },
       ],
     },
@@ -143,44 +138,42 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Site Links',
+          title: 'Site Info',
           items: [
             {
               label: 'About',
               to: '/about',
             },
             {
+              label: 'Privacy',
+              to: '/privacy',
+            },
+            {
+              label: 'Settings',
+              to: '/settings',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
               label: 'Glossary',
               to: '/docs/category/glossary',
             },
             {
-              label: 'Privacy',
-              to: '/privacy',
+              label: 'Resource List',
+              to: '/docs/resources',
             },
-            // Hiding as it doesn't make much sense for now.
-            // This is a blog site, not a docs site.
           ],
         },
         {
           title: 'More',
           items: [
             {
-              label: 'Settings',
-              to: '/settings',
-            },
-            {
-              label: 'Resource List',
-              to: '/docs/resources',
-            },
-            {
               label: 'Support this site',
               to: '/tip',
             },
-          ],
-        },
-        {
-          title: 'External Links',
-          items: [
             {
               label: 'Source Code',
               href: 'https://codeberg.org/rainyy012/pages',
