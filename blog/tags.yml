@@ -1,7 +1,11 @@
 campaign:
   label: Campaign
   permalink: /campaign
-  
+
+casual:
+  label: Casual
+  permalink: /casual
+
 fun:
   label: Fun
   permalink: /fun
@@ -13,6 +17,10 @@ knowledge:
 memes:
   label: Memes
   permalink: /memes
+
+music:
+  label: Music
+  permalink: /music
 
 quiz:
   label: Quiz
