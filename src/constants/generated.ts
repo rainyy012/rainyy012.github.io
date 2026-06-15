@@ -10,7 +10,7 @@ export interface CustomValuesEnv {
 }
 
 export interface CustomValues extends Omit<CustomValuesEnv, 'BTC_DONATION_ADDRESSES' | 'SITE_URL'> {
-  BTC_DONATION_ADDRESS: string
+  BTC_DONATION_ADDRESS?: string
 }
 
 export const CUSTOM_VALUES = GENERATED_CONFIGS.customFields as unknown as CustomValues

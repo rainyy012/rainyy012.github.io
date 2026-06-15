@@ -139,11 +139,21 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        // {
-        //   to | href: '',
-        //   label: '',
-        //   position: 'left' | 'right',
-        // },
+        {
+          to: '/blog',
+          label: 'Home',
+          position: 'left',
+        },
+        {
+          to: '/resources/glossary',
+          label: 'Resources',
+          position: 'left',
+        },
+        {
+          to: '/about',
+          label: 'About',
+          position: 'left',
+        },
       ],
     },
     footer: {
@@ -174,7 +184,7 @@ const config: Config = {
               to: `${DOCS_BASE_PATH}/glossary`,
             },
             {
-              label: 'Resource List',
+              label: 'External',
               to: `${DOCS_BASE_PATH}/external`,
             },
           ],

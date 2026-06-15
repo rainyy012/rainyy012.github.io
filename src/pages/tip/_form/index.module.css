@@ -116,6 +116,39 @@
   background-color: #ffffff;
 }
 
-.codeBlock {
-  padding-inline: 1rem;
+.address {
+  color: inherit;
+  border: none;
+  display: grid;
+  border-radius: 0.5rem;
+  box-shadow: var(--ifm-global-shadow-lw);
+  font-size: inherit;
+  letter-spacing: 0.2rem;
+  padding: 1rem 2rem;
+  resize: none;
+  line-height: 2rem;
+}
+
+.address[data-is-mobile="true"] {
+  field-sizing: content;
+  width: 100%;
+}
+
+.address[data-is-mobile="false"] {
+  min-width: 460px;
+}
+
+[data-theme="light"] .address {
+  background-color: rgb(246, 248, 250);
+}
+
+[data-theme="dark"] .address {
+  background-color: rgb(40, 42, 54);
+}
+
+.copyButton {
+  align-items: center;
+  display: grid;
+  gap: 0.25rem;
+  grid-auto-flow: column;
 }

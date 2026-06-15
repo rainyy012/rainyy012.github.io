@@ -1,4 +1,5 @@
 import { useColorMode, useWindowSize } from '@docusaurus/theme-common'
+import { TOAST_TIMEOUT } from '@site/src/constants'
 import { ReactNode } from 'react'
 import { Bounce, ToastContainer } from 'react-toastify'
 
@@ -8,7 +9,7 @@ export function CustomToastContainer(): ReactNode {
   return (
     <ToastContainer
       position='top-center'
-      autoClose={5000}
+      autoClose={TOAST_TIMEOUT}
       hideProgressBar
       closeOnClick
       pauseOnFocusLoss

@@ -1,8 +1,22 @@
 import Link from '@docusaurus/Link'
+import { useWindowSize } from '@docusaurus/theme-common'
+import { TOAST_TIMEOUT } from '@site/src/constants'
 import { CUSTOM_VALUES } from '@site/src/constants/generated'
-import CodeBlock from '@theme/CodeBlock'
-import { ChangeEvent, ComponentType, ReactNode, SVGProps, useRef, useState } from 'react'
-import QRCode, { QRCodeProps } from 'react-qr-code'
+import CopyIcon from '@theme/Icon/Copy'
+import SuccessIcon from '@theme/Icon/Success'
+import ClipboardJS from 'clipboard'
+import {
+  ChangeEvent,
+  ComponentType,
+  MouseEvent,
+  ReactNode,
+  SVGProps,
+  useCallback,
+  useRef,
+  useState,
+} from 'react'
+import QRCode from 'react-qr-code'
+import { toast } from 'react-toastify'
 import styles from './index.module.css'
 import LogoBTC from './logos/btc.svg'
 import LogoETH from './logos/eth.svg'
@@ -108,7 +122,7 @@ export function TippingForm(): ReactNode {
               </Link>
             </div>
             <span className={styles.buttonHint}>
-              This button will open Liberapay in a new tab/window.
+              This button will open Liberapay in a new tab.
             </span>
           </div>
         )}
@@ -124,7 +138,7 @@ export function TippingForm(): ReactNode {
               </Link>
             </div>
             <span className={styles.buttonHint}>
-              This button will open Patreon in a new tab/window.
+              This button will open Patreon in a new tab.
             </span>
           </div>
         )}
@@ -145,24 +159,12 @@ export function TippingForm(): ReactNode {
         )}
         {method === TippingMethod.BTC && (
           <div className={styles.methodDisplayContainer}>
-            <QRCode
-              {...SHARED_QR_CODE_PROPS}
-              value={BTC_DONATION_ADDRESS!}
-            />
-            <CodeBlock className={styles.codeBlock} language='plaintext'>
-              {BTC_DONATION_ADDRESS}
-            </CodeBlock>
+            <QRCodeAndAddress address={BTC_DONATION_ADDRESS!} />
           </div>
         )}
         {method === TippingMethod.ETH && (
           <div className={styles.methodDisplayContainer}>
-            <QRCode
-              {...SHARED_QR_CODE_PROPS}
-              value={ETH_DONATION_ADDRESS!}
-            />
-            <CodeBlock className={styles.codeBlock} language='plaintext'>
-              {ETH_DONATION_ADDRESS}
-            </CodeBlock>
+            <QRCodeAndAddress address={ETH_DONATION_ADDRESS!} />
           </div>
         )}
       </div>
@@ -170,7 +172,53 @@ export function TippingForm(): ReactNode {
   )
 }
 
-const SHARED_QR_CODE_PROPS: Pick<QRCodeProps, 'size' | 'className'> = {
-  className: styles.qr,
-  size: 200,
+interface QRCodeAndAddressProps {
+  address: string
+}
+
+const selectAllOnClick = (e: MouseEvent<HTMLTextAreaElement>) => {
+  (e.target as HTMLTextAreaElement).select()
+}
+
+function QRCodeAndAddress({ address }: QRCodeAndAddressProps): ReactNode {
+
+  const windowsize = useWindowSize()
+  const [isCopied, setCopyState] = useState(false)
+  const onCopy = useCallback(() => {
+    try {
+      ClipboardJS.copy(address)
+      toast.success('Address copied!')
+      setCopyState(true)
+      setTimeout(() => { setCopyState(false) }, TOAST_TIMEOUT)
+    } catch (error) {
+      toast.error('Unable to copy address')
+      console.error(error)
+    }
+  }, [address])
+
+  const DisplayIcon = isCopied ? SuccessIcon : CopyIcon
+
+  return (
+    <>
+      <QRCode
+        className={styles.qr}
+        size={200}
+        value={address}
+      />
+      <textarea
+        className={styles.address}
+        data-is-mobile={windowsize === 'mobile'}
+        value={address.replace(/(.{4})/g, '$1 ')}
+        readOnly
+        onClick={selectAllOnClick}
+      />
+      <button
+        className={`button button--${isCopied ? 'success' : 'primary'} ${styles.copyButton}`}
+        onClick={onCopy}
+      >
+        <DisplayIcon height={20} />
+        Copy address
+      </button>
+    </>
+  )
 }
