@@ -4,6 +4,8 @@ import { config as dotEnvConfig } from 'dotenv'
 import { existsSync } from 'fs'
 import { themes as prismThemes } from 'prism-react-renderer'
 import seedrandom from 'seedrandom'
+import { DOCS_BASE_PATH } from './src/constants'
+import { type CustomValues } from './src/constants/generated'
 import { isString } from './src/utils/type-check'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -50,11 +52,10 @@ const config: Config = {
     locales: ['en'],
   },
 
-  customFields: {
+  customFields: <CustomValues>{
     DISCORD_LINK: process.env.DISCORD_LINK,
     GIT_HASH: process.env.GIT_HASH,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
-    SITE_URL: process.env.SITE_URL,
     ETH_DONATION_ADDRESS: process.env.ETH_DONATION_ADDRESS,
     BTC_DONATION_ADDRESS: (() => {
       const addressPool = String(
@@ -66,7 +67,7 @@ const config: Config = {
         )())
       ]
     })()
-  },
+  } as unknown as Config['customFields'],
 
   presets: [
     [
@@ -76,6 +77,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Remove this to remove the "edit this page" links.
           editUrl: EDIT_URL,
+          path: './resources',
+          routeBasePath: '/resources',
         },
         blog: {
           // routeBasePath: '/',
@@ -168,11 +171,11 @@ const config: Config = {
           items: [
             {
               label: 'Glossary',
-              to: '/docs/category/glossary',
+              to: `${DOCS_BASE_PATH}/glossary`,
             },
             {
               label: 'Resource List',
-              to: '/docs/resources',
+              to: `${DOCS_BASE_PATH}/external`,
             },
           ],
         },

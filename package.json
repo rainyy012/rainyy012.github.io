@@ -18,7 +18,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "spellcheck": "cspell lint . -c ./.vscode/cspell.json",
     "typecheck": "tsc",
-    "inspect": "pnpm run spellcheck && pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build"
+    "inspect": "node ./scripts/inspect.ts"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

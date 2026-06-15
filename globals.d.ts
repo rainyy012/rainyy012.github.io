@@ -1,5 +1,5 @@
 import 'react'
-import { CustomValuesEnv } from './src/constants'
+import { CustomValuesEnv } from './src/constants/generated'
 
 declare module 'react' {
   interface CSSProperties {

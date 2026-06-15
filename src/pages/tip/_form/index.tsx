@@ -1,5 +1,5 @@
 import Link from '@docusaurus/Link'
-import { CUSTOM_VALUES } from '@site/src/constants'
+import { CUSTOM_VALUES } from '@site/src/constants/generated'
 import CodeBlock from '@theme/CodeBlock'
 import { ChangeEvent, ComponentType, ReactNode, SVGProps, useRef, useState } from 'react'
 import QRCode, { QRCodeProps } from 'react-qr-code'
