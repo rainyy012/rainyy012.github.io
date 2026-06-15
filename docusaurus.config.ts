@@ -3,6 +3,7 @@ import type { Config } from '@docusaurus/types'
 import { config as dotEnvConfig } from 'dotenv'
 import { existsSync } from 'fs'
 import { themes as prismThemes } from 'prism-react-renderer'
+import { isString } from './src/utils/type-check'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -85,7 +86,7 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        gtag: typeof process.env.GOOGLE_ANALYTICS_ID === 'string' ? {
+        gtag: isString(process.env.GOOGLE_ANALYTICS_ID) ? {
           trackingID: process.env.GOOGLE_ANALYTICS_ID,
           anonymizeIP: true,
         } : undefined,
