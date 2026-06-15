@@ -1,4 +1,4 @@
-import { isEmptyObject } from '@site/src/utils/object.draft'
+import { isEmptyObject } from '@site/src/utils/object'
 import { produce } from 'immer'
 import {
   Children,
