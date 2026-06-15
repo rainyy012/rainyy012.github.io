@@ -3,6 +3,7 @@ import type { Config } from '@docusaurus/types'
 import { config as dotEnvConfig } from 'dotenv'
 import { existsSync } from 'fs'
 import { themes as prismThemes } from 'prism-react-renderer'
+import seedrandom from 'seedrandom'
 import { isString } from './src/utils/type-check'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -55,9 +56,16 @@ const config: Config = {
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     SITE_URL: process.env.SITE_URL,
     ETH_DONATION_ADDRESS: process.env.ETH_DONATION_ADDRESS,
-    BTC_DONATION_ADDRESSES: String(
-      process.env.BTC_DONATION_ADDRESSES || ''
-    ).split('\n').filter(Boolean),
+    BTC_DONATION_ADDRESS: (() => {
+      const addressPool = String(
+        process.env.BTC_DONATION_ADDRESSES || ''
+      ).split('\n').filter(Boolean)
+      return addressPool[
+        Math.floor(addressPool.length * seedrandom(
+          String(5 * Math.floor(new Date().getDate() / 5))
+        )())
+      ]
+    })()
   },
 
   presets: [

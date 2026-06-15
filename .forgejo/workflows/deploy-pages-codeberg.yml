@@ -1,4 +1,4 @@
-name: Publish Page (codeberg)
+name: Deploy Pages (codeberg)
 
 on:
   workflow_dispatch:

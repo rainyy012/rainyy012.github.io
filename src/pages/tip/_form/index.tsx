@@ -1,14 +1,16 @@
 import Link from '@docusaurus/Link'
+import { CUSTOM_VALUES } from '@site/src/constants'
 import CodeBlock from '@theme/CodeBlock'
 import { ChangeEvent, ComponentType, ReactNode, SVGProps, useRef, useState } from 'react'
 import QRCode, { QRCodeProps } from 'react-qr-code'
-import { BTC_DONATION_ADDRESS, ETH_DONATION_ADDRESS } from './addresses'
 import styles from './index.module.css'
 import LogoBTC from './logos/btc.svg'
 import LogoETH from './logos/eth.svg'
 import LogoKoFi from './logos/ko-fi.svg'
 import LogoLiberapay from './logos/liberapay.svg'
 import LogoPatreon from './logos/patreon.svg'
+
+const { BTC_DONATION_ADDRESS, ETH_DONATION_ADDRESS } = CUSTOM_VALUES
 
 enum TippingMethod {
   LIBERAPAY = 'LIBERAPAY',
