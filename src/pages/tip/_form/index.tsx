@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link'
 import { useWindowSize } from '@docusaurus/theme-common'
 import { TOAST_TIMEOUT } from '@site/src/constants'
 import { CUSTOM_VALUES } from '@site/src/constants/generated'
+import { useConstant } from '@site/src/hooks/useConstants'
 import CopyIcon from '@theme/Icon/Copy'
 import SuccessIcon from '@theme/Icon/Success'
 import ClipboardJS from 'clipboard'
@@ -17,6 +18,7 @@ import {
 } from 'react'
 import QRCode from 'react-qr-code'
 import { toast } from 'react-toastify'
+import seedrandom from 'seedrandom'
 import styles from './index.module.css'
 import LogoBTC from './logos/btc.svg'
 import LogoETH from './logos/eth.svg'
@@ -24,7 +26,7 @@ import LogoKoFi from './logos/ko-fi.svg'
 import LogoLiberapay from './logos/liberapay.svg'
 import LogoPatreon from './logos/patreon.svg'
 
-const { BTC_DONATION_ADDRESS, ETH_DONATION_ADDRESS } = CUSTOM_VALUES
+const { BTC_DONATION_ADDRESSES, ETH_DONATION_ADDRESS } = CUSTOM_VALUES
 
 enum TippingMethod {
   LIBERAPAY = 'LIBERAPAY',
@@ -69,8 +71,18 @@ const OPTIONS: Array<ITippingOption> = [
 ]
 
 export function TippingForm(): ReactNode {
+
   const [method, setMethod] = useState<TippingMethod | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  const BTC_DONATION_ADDRESS = useConstant<string>(() => {
+    return BTC_DONATION_ADDRESSES[
+      Math.floor(BTC_DONATION_ADDRESSES.length * seedrandom(
+        String(5 * Math.floor(new Date().getDate() / 5))
+      )())
+    ]
+  })
+
   return (
     <div ref={containerRef} className={styles.container}>
       <ul className={styles.optionList}>
@@ -170,6 +182,7 @@ export function TippingForm(): ReactNode {
       </div>
     </div>
   )
+
 }
 
 interface QRCodeAndAddressProps {

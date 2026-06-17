@@ -1,0 +1,16 @@
+import { isFunction } from '@site/src/utils/type-check'
+import { useRef } from 'react'
+
+export function useConstant<T>(valueOrFactory: T | (() => T)): T {
+  const isInitialized = useRef(false)
+  const value = useRef<T>(null!)
+  if (!isInitialized.current) {
+    if (isFunction(valueOrFactory)) {
+      value.current = valueOrFactory()
+    } else {
+      value.current = valueOrFactory
+    }
+    isInitialized.current = true
+  }
+  return value.current
+}

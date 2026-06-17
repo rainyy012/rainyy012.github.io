@@ -3,7 +3,6 @@ import type { Config } from '@docusaurus/types'
 import { config as dotEnvConfig } from 'dotenv'
 import { existsSync } from 'fs'
 import { themes as prismThemes } from 'prism-react-renderer'
-import seedrandom from 'seedrandom'
 import { DOCS_BASE_PATH } from './src/constants'
 import { type CustomValues } from './src/constants/generated'
 import { isString } from './src/utils/type-check'
@@ -52,22 +51,40 @@ const config: Config = {
     locales: ['en'],
   },
 
-  customFields: <CustomValues>{
-    DISCORD_LINK: process.env.DISCORD_LINK,
-    GIT_HASH: process.env.GIT_HASH,
-    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
-    ETH_DONATION_ADDRESS: process.env.ETH_DONATION_ADDRESS,
-    BTC_DONATION_ADDRESS: (() => {
-      const addressPool = String(
+  customFields: (() => {
+    const missingEnvVariables: Array<string> = []
+    if (!process.env.DISCORD_LINK) {
+      missingEnvVariables.push('DISCORD_LINK')
+    }
+    if (!process.env.GIT_HASH) {
+      missingEnvVariables.push('GIT_HASH')
+    }
+    if (!process.env.GOOGLE_ANALYTICS_ID) {
+      missingEnvVariables.push('GOOGLE_ANALYTICS_ID')
+    }
+    if (!process.env.ETH_DONATION_ADDRESS) {
+      missingEnvVariables.push('ETH_DONATION_ADDRESS')
+    }
+    if (!process.env.BTC_DONATION_ADDRESSES) {
+      missingEnvVariables.push('BTC_DONATION_ADDRESSES')
+    }
+    if (missingEnvVariables.length > 0) {
+      throw new Error(`Missing env variable(s): ${missingEnvVariables.join(', ')}`)
+    }
+    const values: CustomValues = {
+      DISCORD_LINK: process.env.DISCORD_LINK,
+      GIT_HASH: process.env.GIT_HASH,
+      GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+      ETH_DONATION_ADDRESS: process.env.ETH_DONATION_ADDRESS,
+      BTC_DONATION_ADDRESSES: String(
         process.env.BTC_DONATION_ADDRESSES || ''
-      ).split('\n').filter(Boolean)
-      return addressPool[
-        Math.floor(addressPool.length * seedrandom(
-          String(5 * Math.floor(new Date().getDate() / 5))
-        )())
-      ]
-    })()
-  } as unknown as Config['customFields'],
+      ).split('\n').filter(Boolean),
+    }
+    if (values.BTC_DONATION_ADDRESSES.length <= 0) {
+      throw new Error('Unexpected empty array: BTC_DONATION_ADDRESSES')
+    }
+    return values as unknown as Config['customFields']
+  })(),
 
   presets: [
     [
