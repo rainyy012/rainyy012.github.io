@@ -53,9 +53,10 @@ const config: Config = {
 
   customFields: (() => {
     const missingEnvVariables: Array<string> = []
-    if (!process.env.DISCORD_LINK) {
-      missingEnvVariables.push('DISCORD_LINK')
-    }
+    // KIV: Not needed for now
+    // if (!process.env.DISCORD_LINK) {
+    //   missingEnvVariables.push('DISCORD_LINK')
+    // }
     if (!process.env.GIT_HASH) {
       missingEnvVariables.push('GIT_HASH')
     }
