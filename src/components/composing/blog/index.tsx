@@ -1,4 +1,4 @@
-import { useBlogPost } from '@docusaurus/plugin-content-blog/lib/client/contexts.js'
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
 import { ReactNode } from 'react'
 
 export interface PreviewOnlyProps {
