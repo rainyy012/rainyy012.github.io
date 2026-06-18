@@ -24,7 +24,7 @@ const promises = tasks.map((task) => {
           ...process.env,
           FORCE_COLOR: '1',
         },
-        shell: true,
+        shell: false,
       }
     )
     let output = ''
