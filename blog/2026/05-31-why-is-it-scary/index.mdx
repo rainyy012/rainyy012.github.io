@@ -9,19 +9,11 @@ description: I have came across quite a few posts on Reddit where the posters ex
 
 import Link from '@docusaurus/Link'
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
-import { FullPageOnly, PreviewOnly } from '@site/src/components/composing'
 import { CustomBlogImage } from '@site/src/components/custom-blog-image'
 
 <CustomBlogImage src={require('./_assets/banner.webp')} />
 
-{/* Note: hashtag links break in list view */}
-{/* https://github.com/facebook/docusaurus/issues/9731 */}
-<PreviewOnly>
-  I have came across quite <Link to={`${useBlogPost().metadata.permalink}#reddit-references`}>a few posts on Reddit</Link> where the posters expressed their worries that are either about starting HRT, the changes from HRT, coming out, or being found out.
-</PreviewOnly>
-<FullPageOnly>
-  I have came across quite [a few posts on Reddit](#reddit-references) where the posters expressed their worries that are either about starting HRT, the changes from HRT, coming out, or being found out.
-</FullPageOnly>
+I have came across quite [a few posts on Reddit](#reddit-references) where the posters expressed their worries that are either about starting HRT, the changes from HRT, coming out, or being found out.
 
 For quite some time, I have been wondering too, just _**why**_? I have also felt the same fear and anxiety in the beginning, and even every now and then, a small trace of that fear and anxiety still haunts me.
 
