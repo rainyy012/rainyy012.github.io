@@ -117,7 +117,7 @@ export function ShareButtons({
         <WhatsappIcon {...SHARED_ICON_PROPS} />
       </WhatsappShareButton>
 
-      <CopyButton url={shareUrl} />
+      <CopyButton title={title} url={shareUrl} />
 
       <NativeShareButton title={title} url={shareUrl} />
 
@@ -157,22 +157,26 @@ export function ShareButtonsForFooter({
 }
 
 interface CopyButtonProps {
+  title?: string
   url: string
 }
 
-function CopyButton({ url }: CopyButtonProps): ReactNode {
+function CopyButton({
+  title,
+  url,
+}: CopyButtonProps): ReactNode {
   const [isCopied, setCopiedState] = useState(false)
   const onCopy = useCallback(() => {
     try {
       ClipboardJS.copy(url)
       setCopiedState(true)
       setTimeout(() => { setCopiedState(false) }, 3000)
-      toast.success('Link copied')
+      toast.success(title ? `Copied link to "${title}"` : `Copied link: ${url}`)
     } catch (error) {
       console.error(error)
       window.alert('Unable to copy link')
     }
-  }, [url])
+  }, [title, url])
   return (
     <button
       className={clsx('react-share__ShareButton', styles.customButtonBase)}
