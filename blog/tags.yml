@@ -6,9 +6,9 @@ casual:
   label: Casual
   permalink: /casual
 
-fun:
-  label: Fun
-  permalink: /fun
+fluff:
+  label: Fluff
+  permalink: /fluff
 
 knowledge:
   label: Knowledge

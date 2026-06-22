@@ -1,0 +1,72 @@
+---
+slug: if-you-are-stressed
+title: If You Are Stressed...
+authors: [rain]
+tags: [fluff]
+image: ./_assets/banner.webp
+description: If you are stressed…
+---
+
+import Link from '@docusaurus/Link'
+import { useBlogPost } from '@docusaurus/plugin-content-blog/lib/client/contexts.js'
+import { PreviewOnly, Spoiler } from '@site/src/components/composing'
+import { CustomBlogImage } from '@site/src/components/custom-blog-image'
+import { CUSTOM_VALUES } from '@site/src/constants'
+import CodeBlock from '@theme/CodeBlock'
+import TabItem from '@theme/TabItem'
+import Tabs from '@theme/Tabs'
+import ThemedImage from '@theme/ThemedImage'
+
+<CustomBlogImage src={require('./_assets/banner.webp')} />
+
+<PreviewOnly>{frontMatter.title}</PreviewOnly>
+
+{/* truncate */}
+
+## Bubble wrap simulator ( > ω < )
+
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+<Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler> <Spoiler>Pop</Spoiler><br/>
+
+## Extra: Markdown
+
+This can be achieved using spoiler tags.
+
+<Tabs>
+  <TabItem value='discord' label='Discord'>
+    <CodeBlock>
+      {new Array(10).fill(new Array(10).fill('||Pop||').join(' ')).join('\n')}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value='reddit' label='Reddit'>
+    <CodeBlock>
+      {new Array(10).fill(new Array(10).fill('>!Pop!<').join(' ')).join('\n')}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+
+## Bonus
+
+“If you are stressed as f..🤐”<br />
+I apologize for my poor sense of humor.
+
+<ThemedImage
+  alt='if-you-are-stressed.af'
+  sources={{
+    light: require('./_assets/if-you-are-stressed-af-light.jpg').default,
+    dark: require('./_assets/if-you-are-stressed-af-dark.jpg').default,
+  }}
+/>
+
+Actually, <Spoiler>it has already been renamed to <Link href={useBlogPost().metadata.editUrl.replace('index.mdx',useBlogPost().frontMatter.image.replace(/\.[a-z]+$/i,'.af'))}><code>banner.af</code></Link></Spoiler>.
+
+Software used to design post banner: [Affinity](https://www.affinity.studio) (not sponsored)
