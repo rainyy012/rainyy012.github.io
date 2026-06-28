@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 .container {
   display: grid;
   gap: 1rem;
@@ -123,6 +125,8 @@
   border-radius: 0.5rem;
   box-shadow: var(--ifm-global-shadow-lw);
   font-size: inherit;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   letter-spacing: 0.2rem;
   padding: 1rem 2rem;
   resize: none;
