@@ -1,4 +1,4 @@
-import { isFunction } from '@site/src/utils/type-check'
+import { isFunction } from '@glyph-cat/type-checking'
 import { useRef } from 'react'
 
 export function useConstant<T>(valueOrFactory: T | (() => T)): T {

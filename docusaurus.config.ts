@@ -1,11 +1,12 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
+import { isString } from '@glyph-cat/type-checking'
 import { config as dotEnvConfig } from 'dotenv'
 import { existsSync } from 'fs'
 import { themes as prismThemes } from 'prism-react-renderer'
 import { DOCS_BASE_PATH } from './src/constants'
 import { type CustomValues } from './src/constants/generated'
-import { isString } from './src/utils/type-check'
+import { REDIRECTION_LIST } from './src/constants/redirection-list'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -232,6 +233,12 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    ['@docusaurus/plugin-client-redirects', {
+      redirects: REDIRECTION_LIST,
+    }],
+  ],
 
 }
 
