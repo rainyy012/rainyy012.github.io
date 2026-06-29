@@ -1,0 +1,16 @@
+.hash {
+  font-size: 10pt;
+}
+
+.hash[data-visible="false"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hash[data-visible="true"] {
+  opacity: 0.5;
+}
+
+.hash > code {
+  background-color: transparent;
+}
