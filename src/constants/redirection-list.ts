@@ -9,4 +9,8 @@ export const REDIRECTION_LIST: Array<IRedirection> = [
     from: '/blog/pride-month-quiz',
     to: '/blog/pride-knowledge-quiz',
   },
+  {
+    from: '/resources/glossary/main',
+    to: '/resources/glossary',
+  },
 ]
