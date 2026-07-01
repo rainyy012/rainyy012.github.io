@@ -9,6 +9,7 @@ import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import Link from '@docusaurus/Link';
 import {isString} from '@glyph-cat/type-checking';
+import {useCheckSafariBrowser} from '@site/src/hooks/browser';
 
 const hashtagPattern = /^#\w+$/i
 const textFragmentPattern = /#:~:text=/i
@@ -29,13 +30,19 @@ export default function MDXA(props: Props): ReactNode {
   const isInternalHash = isInternal && otherProps.href?.match(textFragmentPattern)
   const showExternalLinkIcon = !isInternal && childrenIsString && !isHashtag
   // This tackles the problem where `location.replace` does't handle text fragment links properly.
-  // KIV: But this still doesn't account for the Safari bug where same page text fragment links fail.
   const CustomMDXA = isInternalHash ? 'a' : (isBlogContext ? CustomBlogMDXA : CustomCommonMDXA)
+  const isSafariBrowser = useCheckSafariBrowser()
   return (
     <CustomMDXA
       {...otherProps}
       className={clsx(anchorTargetClassName, props.className)}
       {...(isInternalHash ? {} : { showExternalLinkIcon }) as CustomCommonMDXAProps}
+      {...((isInternalHash && isSafariBrowser) ? {
+        // Same-page text fragment links fail in Safari and Firefox but there
+        // doesn't seem to be any solution for Firefox at the moment.
+        target: '_blank',
+        referrerPolicy: 'no-referrer',
+      } : {})}
     >
       {children}
     </CustomMDXA>

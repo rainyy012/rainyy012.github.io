@@ -11,8 +11,10 @@ import {DocsPreferredVersionContextProvider} from '@docusaurus/plugin-content-do
 import type {Props} from '@theme/Layout/Provider';
 import {CustomFontFamilyProvider} from '@site/src/components/custom-font';
 import {CustomToastContainer} from '@site/src/components/custom-toast-container';
+import {CheckSafariBrowserProvider} from '@site/src/hooks/browser';
 
 const Provider = composeProviders([
+  CheckSafariBrowserProvider,
   ColorModeProvider,
   CustomFontFamilyProvider,
   AnnouncementBarProvider,
