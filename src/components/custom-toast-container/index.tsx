@@ -14,6 +14,7 @@ export function CustomToastContainer(): ReactNode {
       closeOnClick
       pauseOnFocusLoss
       draggable
+      draggableDirection='y'
       pauseOnHover
       theme={colorMode}
       transition={Bounce}
