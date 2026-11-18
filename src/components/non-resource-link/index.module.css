@@ -1,0 +1,5 @@
+.nonResourceLink {
+  cursor: not-allowed;
+  opacity: 0.5;
+  user-select: none;
+}

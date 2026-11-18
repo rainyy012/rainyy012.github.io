@@ -18,6 +18,10 @@ figcaption {
   text-align: center;
 }
 
+blockquote {
+  font-style: italic;
+}
+
 /**
  * Warm sepia / coffee tone palette
  */
