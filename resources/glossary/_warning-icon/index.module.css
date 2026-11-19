@@ -1,0 +1,11 @@
+.icon {
+  display: inline-block;
+  /* fill: var(--ifm-font-color-base); */
+  fill: #ffa04b;
+  height: 20px;
+  transform: translateY(0.15rem);
+}
+
+.icon[data-severe="true"] {
+  fill: #ff6666;
+}

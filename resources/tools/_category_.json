@@ -1,0 +1,8 @@
+{
+  "label": "Tools",
+  "position": 2,
+  "link": {
+    "slug": "/tools",
+    "type": "generated-index"
+  }
+}

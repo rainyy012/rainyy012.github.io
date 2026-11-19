@@ -1,0 +1,63 @@
+.container {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  justify-self: start;
+  min-width: 300px;
+  padding: 0;
+}
+
+.container > li {
+  display: grid;
+  margin: 0;
+  padding: 0;
+}
+
+.container > li > button {
+  align-items: center;
+  background-color: var(--color);
+  border: solid 1px transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  display: grid;
+  justify-items: start;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition-duration: 0.2s;
+}
+
+.container > li > button > span:nth-child(1) {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.container > li > button > span:nth-child(2) {
+  font-family: monospace;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.container > li > button:hover {
+  box-shadow: 0px 1px 5px 0px #80808080;
+  transform: translateY(-1px);
+  border-color: #80808080;
+}
+
+.container > li > button:active {
+  opacity: 0.5;
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+
+.tinyTile {
+  aspect-ratio: 1;
+  background-color: var(--color);
+  border: solid 1px #b5b5b5;
+  box-shadow: 0px 0px 0px 1px #4a4a4a;
+  display: inline;
+  width: 12px;
+  margin-inline: 0.15rem;
+}
